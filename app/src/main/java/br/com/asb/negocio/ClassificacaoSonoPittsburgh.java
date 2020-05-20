@@ -183,10 +183,10 @@ public class ClassificacaoSonoPittsburgh {
         if (minutos <= 15) {
             restposta = 0;
             getClassificacaoSonoPittsburghBeans().setComponente_2_resposta_LatenciaSono_q2(Constantes.RESULTADO_LATENCIA_0);
-        } else if (minutos >= 16 || minutos <= 30) {
+        } else if (minutos >= 16 && minutos <= 30) {
             restposta = 1;
             getClassificacaoSonoPittsburghBeans().setComponente_2_resposta_LatenciaSono_q2(Constantes.RESULTADO_LATENCIA_1);
-        } else if (minutos >= 31 || minutos <= 60) {
+        } else if (minutos >= 31 && minutos <= 60) {
             restposta = 2;
             getClassificacaoSonoPittsburghBeans().setComponente_2_resposta_LatenciaSono_q2(Constantes.RESULTADO_LATENCIA_2);
         } else if (minutos > 60) {
@@ -267,7 +267,7 @@ public class ClassificacaoSonoPittsburgh {
         } else if (horas == 6 || horas == 7) {
             restposta = 1;
             getClassificacaoSonoPittsburghBeans().setComponente_3resposta_Questao_4(Constantes.RESULTADO_QUESTAO_4_1);
-        } else if (horas >= 5 || horas < 6) {
+        } else if (horas == 5) {
             restposta = 2;
             getClassificacaoSonoPittsburghBeans().setComponente_3resposta_Questao_4(Constantes.RESULTADO_QUESTAO_4_2);
         } else if (horas < 5) {
@@ -275,6 +275,10 @@ public class ClassificacaoSonoPittsburgh {
             getClassificacaoSonoPittsburghBeans().setComponente_3resposta_Questao_4(Constantes.RESULTADO_QUESTAO_4_3);
 
         }
+
+
+
+
 
         return restposta;
 

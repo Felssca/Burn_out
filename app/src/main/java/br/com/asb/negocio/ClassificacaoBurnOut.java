@@ -239,19 +239,15 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
          if(classificacaoBurnOutBeans.getPercentuaDesgasteIndolencia()>=90){
 
 
-            if(media==0 || media <=17 ){
+            if(media <=17 ){
             resultado = Constantes.RESULTADO_NIVEL_CRITICO_1;
 
-            }else if(media==18 || media <=29 ) {
+            }else if(media >= 18 && media <=29 ) {
                 resultado = Constantes.RESULTADO_NIVEL_CRITICO_2;
             }}else{
-
              resultado = Constantes.RESULTADO_NIVEL_CRITICO_0;
 
          }
-
-
-
 
         return resultado;
     }
@@ -269,13 +265,13 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
             if(porcentagem<=10){
             nivel = Constantes.RESULTADO_NIVEL_BO_MUITO_BAIXO;
 
-            }else if(porcentagem>=11 || porcentagem<=33){
+            }else if(porcentagem >= 11 && porcentagem <= 33){
                 nivel = Constantes.RESULTADO_NIVEL_BO_BAIXO;
 
-            }else if(porcentagem>=34 || porcentagem<=66){
+            }else if(porcentagem >=34 && porcentagem <=66){
                 nivel = Constantes.RESULTADO_NIVEL_BO_MEDIO;
 
-            }else if(porcentagem>=67 || porcentagem<=90){
+            }else if(porcentagem >=67 && porcentagem<=90){
                 nivel = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
 
             }
@@ -294,13 +290,13 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
             if(porcentagem<=10){
             nivel = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
 
-            }else if(porcentagem>=11 || porcentagem<=33){
+            }else if(porcentagem >=11 && porcentagem <=33){
                 nivel = Constantes.RESULTADO_NIVEL_BO_MEDIO;
 
-            }else if(porcentagem>=34 || porcentagem<=66){
+            }else if(porcentagem >=34 && porcentagem <=66){
                 nivel = Constantes.RESULTADO_NIVEL_BO_BAIXO;
 
-            }else if(porcentagem>=67 || porcentagem<=90){
+            }else if(porcentagem >=67 && porcentagem<=90 ){
                 nivel = Constantes.RESULTADO_NIVEL_BO_MUITO_BAIXO;
 
             }
