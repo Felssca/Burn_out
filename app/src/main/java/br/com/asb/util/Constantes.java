@@ -11,7 +11,7 @@ public static String RESULTADO_CRITICO = "Crítico";
 public static String RESULTADO_RUIM = "Ruim";
 public static String RESULTADO_MUITO_RUIM = "Muito Ruim ";
 public static String RESULTADO_MÉDIO = "Médio";
-public static String RESULTADO_BAIXO = "Baxio";
+public static String RESULTADO_BAIXO = "Baixo";
 public static String RESULTADO_MUITO_BAIXO = "Muito Baixo";
 
 public static String RESULTADO_MUITO = "Muita";
