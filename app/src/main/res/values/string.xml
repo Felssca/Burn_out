@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="fase_ano">
+        <item>1 Ano</item>
+        <item>2 Ano</item>
+        <item>3 Ano</item>
+        <item>4 Ano</item>
+        <item>5 Ano</item>
+        <item>6 Ano</item>
+        <item>7 Ano</item>
+        <item>8 Ano</item>
+        <item>9 Ano</item>
+
+    </string-array><string-array name="sexo">
+        <item>FEMININO</item>
+        <item>MASCULINO</item>
+
+    </string-array>
+
+
+    <string-array name="bimestre">
+        <item>1 Bimestre</item>
+        <item>2 Bimestre</item>
+        <item>3 Bimestre</item>
+        <item>4 Bimestre</item>
+    </string-array>
+
+    <string-array name="ensino">
+        <item>Fundamental I -  1° ao 5° ano </item>
+        <item>Fundamental II - 6° ao 9° ano </item>
+    </string-array>
+
+    <string-array name="periodo">
+        <item>Janeiro</item>
+        <item>Fevereiro </item>
+        <item>Março </item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Junho</item>
+        <item>Julho</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Dezembro</item>
+
+    </string-array>
+    <string-array name="ano">
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+    </string-array>
+    <string-array name="dias_previstos">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+
+
+    </string-array>
+
+    <string name="app_name">ASB - Avaliação da Sindrome de BurnOut</string>
+    <string name="app_name_title">ASB - Avaliação da Sindrome de BurnOut</string>
+    <string name="app_name_title_autora">Ingrid Santos Pereira - Doutorado em Educação</string>
+
+    <string name="app_nome_completo">Análise da Sinsdrome de BurnOut</string>
+    <string name="btn_configuracao">Configurações </string>
+    <string name="btn_exportar_base_dados">Exportar a base de dados </string>
+    <string name="btn_pesquisa_classificacao">Classificação da Pesquisa </string>
+
+
+    <string name="lbl_listar_professores_entrevistados">Lista de pessoas entrevistadas </string>
+    <string name="lbl_listar_professores_bakups">Lista de dados salvos </string>
+
+
+    <!--Tela Principla-->
+
+    <string name="lbl_txt_titulo_cadastro_anaminase"> Cadastro Anamnase</string>
+    <string name="lbl_txt_detalhes_pesquisa"> Resultado da Pesquisa  </string>
+    <string name="lbl_txt_detalhes_pesquisa_classificacao"> Classificação da Pesquisa  </string>
+
+
+    <string name="lbl_txt_nome_profissional"> Nome do profissional  </string>
+    <string name="lbl_txt_telefone_profissional"> Telefone  </string>
+    <string name="lbl_txt_email_profissional"> Email  </string>
+    <string name="lbl_txt_sexo_profissional"> Sexo  </string>
+    <string name="lbl_txt_data_entrevista_profissional"> Data da Entrevista  </string>
+    <string name="lbl_txt_CDE"> CDE  </string>
+    <string name="lbl_txt_peso_profissional"> Peso  </string>
+    <string name="lbl_txt_idade_profissional"> Idade  </string>
+    <string name="lbl_txt_altura_profissional"> Altura  </string>
+
+
+
+
+
+    <string name="lbl_txt_radio_refeicao"> Quantas refeições diárias? </string>
+    <string name="lbl_txt_radio_refeicao_1"> 1 a 3 refeições por dia </string>
+    <string name="lbl_txt_radio_refeicao_2"> 3 a 6 refeições por dia  </string>
+
+    <string name="lbl_txt_radio_sexo_masculino"> Masculino</string>
+    <string name="lbl_txt_radio_sexo_feminino"> Feminino </string>
+
+
+    <string name="lbl_txt_radio_atiividade_fisica"> Pratica alguma atividade física? </string>
+    <string name="lbl_txt_qual_atividade"> Qual? </string>
+    <string name="lbl_txt_qual_duracao"> Duração? </string>
+    <string name="lbl_txt_qual_x_semana"> Quantas vezes por semana?  </string>
+    <string name="lbl_txt_atividade_intensidade"> Intensidade?  </string>
+
+    <string name="lbl_txt_atividade_leve"> Leve  </string>
+    <string name="lbl_txt_atividade_media"> Média  </string>
+    <string name="lbl_txt_atividade_alta"> Alta  </string>
+
+    <string name="lbl_txt_atividade_objetivo"> Quais seus objetivos com a prática da atividade física?   </string>
+
+    <string name="lbl_txt_atividade_formacao"> Qual a sua formação?   </string>
+    <string name="lbl_txt_atividade_formacao_tempo"> Quanto tempo de profissão?   </string>
+    <string name="lbl_txt_atividade_formacao_instituicao"> Em qual instituição?   </string>
+    <string name="lbl_txt_atividade_formacao_treinamento"> Participou de treinamentos, cursos, capacitação ou atividade
+        de formação continuada nos últimos 2 anos?   </string>
+    <string name="lbl_txt_atividade_formacao_treinamento_media"> Em média qual a sua carga horária de trabalho semanal?   </string>
+    <string name="lbl_txt_atividade_formacao_treinamento_escolas"> Em quantas escolas você trabalha?   </string>
+    <string name="lbl_txt_atividade_formacao_treinamento_outras"> Além das atividades na escola exerce alguma outra atividade que contribui com sua renda pessoal?   </string>
+
+    <string name="lbl_sim"> Sim </string>
+    <string name="lbl_nao"> Não </string>
+    <string name="lbl_idade"> Idade </string>
+
+
+
+    <string name="lbl_txt_titulo_cadastro_anamnese_atividade_fisica"> ANAMNESE DA ATIVIDADE FÍSICA</string>
+    <string name="lbl_txt_titulo_cadastro_anamnese_atividade_nurtricional"> ANAMNESE NUTRICIONAL</string>
+    <string name="lbl_txt_titulo_cadastro_anamnese_atividade_profissional"> ANAMNESE PROFISSIONAL</string>
+    <string name="lbl_txt_titulo_cadastro_anamnese"> ANAMNESE </string>
+
+
+
+    <string name="lbl_titulo_diario_classe_medidas">Diário de Classe Medidas</string>
+    <string name="lbl_titulo_diario_classe_presencas">Diário de Classe Presença</string>
+    <string name="lbl_txt_ensino">Entrevistado</string>
+
+    <string name="lbl_txt_tips_falta">Levar a tabela de presença dessa turma </string>
+    <string name="lbl_txt_tips_relatorio">Ver dados completos coletados</string>
+    <string name="lbl_txt_tips_medidas">Levar às medidas dos anlunos dessa turma </string>
+
+    <!--BURNOUT-->
+    <string name="lbl_txt_burn_titulo">Avaliação da Síndrome de Burnout</string>
+
+    <string name="lbl_txt_burn_quadro_0">0 = Nunca</string>
+    <string name="lbl_txt_burn_quadro_1">1 = Raramente: Algumas vezes por ano</string>
+    <string name="lbl_txt_burn_quadro_2">2 = Às vezes:Algumas vezes por mês</string>
+    <string name="lbl_txt_burn_quadro_3">3 = Frequentemente:Algumas vezes por semana</string>
+    <string name="lbl_txt_burn_quadro_4">4 = Muito frequentemente:Todos os dias</string>
+
+
+    <string name="lbl_txt_burn_1">1-O meu trabalho representa para mim um desafio estimulante.</string>
+    <string name="lbl_txt_burn_2">2-Não gosto de atender alguns alunos.</string>
+    <string name="lbl_txt_burn_3">3-Acho que muitos alunos são insuportáveis. </string>
+    <string name="lbl_txt_burn_4">4-Preocupa-me a forma como tratei algumas pessoas no trabalho. </string>
+    <string name="lbl_txt_burn_5">5-Vejo o meu trabalho como uma fonte de realização pessoal. </string>
+    <string name="lbl_txt_burn_6">6-Acho que os familiares dos alunos são uns chatos.</string>
+    <string name="lbl_txt_burn_7">7-Penso que trato com indiferença alguns alunos. </string>
+    <string name="lbl_txt_burn_8">8-Penso que estou saturado (a) pelo meu trabalho. </string>
+    <string name="lbl_txt_burn_9">9-Sinto-me culpado (a) por algumas das minhas atitudes no trabalho. </string>
+    <string name="lbl_txt_burn_10">10-Penso que o meu trabalho me dá coisas positivas. </string>
+    <string name="lbl_txt_burn_11">11-Gosto de ser irônico (a) com alguns alunos. </string>
+    <string name="lbl_txt_burn_12">12-Sinto-me pressionado pelo trabalho. </string>
+    <string name="lbl_txt_burn_13">13-Tenho remorsos por alguns dos meus comportamentos no trabalho. </string>
+    <string name="lbl_txt_burn_14">14-Rotulo ou classifico os alunos segundo o seu comportamento. </string>
+    <string name="lbl_txt_burn_15">15-O meu trabalho me é gratificante. </string>
+    <string name="lbl_txt_burn_16">16-Penso que deveria pedir desculpas a alguém pelo meu comportamento no trabalho </string>
+    <string name="lbl_txt_burn_17">17-Sinto-me cansado (a) fisicamente no trabalho </string>
+    <string name="lbl_txt_burn_18">18-Sinto-me desgastado (a) emocionalmente. </string>
+    <string name="lbl_txt_burn_19">19-Sinto-me encantado (a) pelo meu trabalho. </string>
+    <string name="lbl_txt_burn_20">20-Sinto-me mal por algumas coisas que disse no meu trabalho. </string>
+
+    <string name="lbl_txt_burn_resposta_0">0</string>
+    <string name="lbl_txt_burn_resposta_1">1</string>
+    <string name="lbl_txt_burn_resposta_2">2</string>
+    <string name="lbl_txt_burn_resposta_3">3</string>
+    <string name="lbl_txt_burn_resposta_4">4</string>
+
+    <!--SONO-->
+
+    <string name="lbl_txt_sono_titulo">Indice de qualidade de sono de Pittsburgh</string>
+    <string name="lbl_txt_sono_instrucoes">Instruções:
+        As seguintes perguntas são relativas aos seus hábitos usuais de sono durante o último mês somente.
+        Suas respostas devem indicar a lembrança mais exata da maioria dos dias e noites no último mês. Por favor, responda a todas as perguntas.</string>
+
+    <string name="lbl_txt_sono_1">1-Durante o último mês, geralmente, que horas você foi se deitar?</string>
+    <string name="lbl_txt_sono_2">2-Durante o último mês, quanto tempo (em minutos) você geralmente levou para dormir à noite?</string>
+    <string name="lbl_txt_sono_3">3-Durante o último mês, quando você geralmente levantou de manhã? Hora usual de levantar. </string>
+    <string name="lbl_txt_sono_4">4-Durante o último mês, quantas horas de sono você teve por noite? (Este pode ser diferente do número de horas que você ficou na cama). </string>
+    <string name="lbl_txt_sono_5">5-Durante o último mês, com que frequência você teve dificuldade de dormir porque você.... </string>
+
+    <string name="lbl_txt_sono_5_a">5-(a)Não conseguiu adormecer em até 30 minutos</string>
+    <string name="lbl_txt_sono_5_b">5-(b)Acordou no meio da noite ou de manhã cedo</string>
+    <string name="lbl_txt_sono_5_c">5-(c)Precisou levantar para ir ao banheiro</string>
+    <string name="lbl_txt_sono_5_d">5-(d)Não conseguiu respirar confortavelmente</string>
+    <string name="lbl_txt_sono_5_e">5-(e)Tossiu ou roncou forte</string>
+    <string name="lbl_txt_sono_5_f">5-(f)Sentiu muito frio</string>
+    <string name="lbl_txt_sono_5_g">5-(g)Sentiu muito calor</string>
+    <string name="lbl_txt_sono_5_h">5-(h)Teve sonhos ruins</string>
+    <string name="lbl_txt_sono_5_i">5-(i)Teve dor</string>
+    <string name="lbl_txt_sono_5_j">5-(j)Outra(s) razão (ões),	por	favor	descreva:</string>
+
+    <string name="lbl_txt_sono_5_k">(k)Com que frequência, durante o último mês, você teve dificuldade para dormir devido a essa razão?</string>
+
+    <string name="lbl_txt_sono_5_j_r_2">0 = Nenhuma no último mês </string>
+    <string name="lbl_txt_sono_5_j_r_3">1 = Menos de 1 vez/semana</string>
+    <string name="lbl_txt_sono_5_j_r_4">2 = 1 ou 2 vezes/semana </string>
+    <string name="lbl_txt_sono_5_j_r_5">3 = 3 ou mais vezes/semana </string>
+
+    <string name="dialog_titulo_lembrete"> Lembrete </string>
+
+    <string name="lbl_txt_sono_6__m1">Muito boa </string>
+    <string name="lbl_txt_sono_6__m2">Boa </string>
+    <string name="lbl_txt_sono_6__m3">Ruim</string>
+    <string name="lbl_txt_sono_6__m4">Muito Ruim </string>
+
+    <string name="lbl_txt_sono_6">6-Durante o último mês, como você classificaria a qualidade do seu sono de uma maneira geral? </string>
+    <string name="lbl_txt_sono_7">7-Durante o último mês, com que frequência você tomou medicamento (prescrito ou “por conta própria”) para lhe ajudar  </string>
+    <string name="lbl_txt_sono_8">8-No último mês, com que frequência você teve dificuldade de ficar acordado enquanto dirigia,
+        comia ou participava de uma atividade social (festa, reunião de amigos, trabalho, estudo)?  </string>
+    <string name="lbl_txt_sono_9">9-Durante o último mês, quão problemático foi para você manter o entusiasmo (ânimo) para fazer as coisas (suas atividades habituais)? </string>
+
+    <!--alimentacaoBeans-->
+    <string name="lbl_txt_alimentacao_titulo">Questionário de Alimentação</string>
+    <string name="lbl_txt_alimentacao_titulo_initi">Com que frequência você consome os seguintes alimentos:</string>
+
+    <string name="lbl_txt_alimentacao_quadro_1">0 = nunca</string>
+    <string name="lbl_txt_alimentacao_quadro_2">1 = até 4 vezes por mês</string>
+    <string name="lbl_txt_alimentacao_quadro_3">2 = até 2 vezes por semana</string>
+    <string name="lbl_txt_alimentacao_quadro_4">3 = até 5 vezes por semana</string>
+    <string name="lbl_txt_alimentacao_quadro_5">4 = todos os dias</string>
+
+
+    <string name="lbl_txt_alimento_1">Legumes Frutas e verduras</string>
+    <string name="lbl_txt_alimento_3">Leite, queijos e laticínios</string>
+    <string name="lbl_txt_alimento_4">Carnes, peixes, frango, ovos</string>
+    <string name="lbl_txt_alimento_5">Cereais, Feijões, grãos integrais</string>
+    <string name="lbl_txt_alimento_6">Castanhas, amêndoas e nozes</string>
+    <string name="lbl_txt_alimento_7">Alimentos industrializados, processados e embutidos</string>
+    <string name="lbl_txt_alimento_8">Doces, pães, bolos, açúcar branco</string>
+    <string name="lbl_txt_alimento_9">Café e alimentos que contém cafeína, refrigerantes e achocolatados</string>
+    <string name="lbl_txt_alimento_10">Salgadinhos, bolachas recheadas, chocolate</string>
+    <string name="lbl_txt_alimento_11">Bebidas alcoólicas</string>
+    <string name="lbl_txt_alimento_12">Legumes e verduras</string>
+
+
+    <!--BurnOut_clasificacao-->
+    <string name="lbl_txt_burn_out">Burn Out</string>
+    <string name="lbl_txt_burn_out_somatorio_ilusao_trabalho">Somatório Ilusão do Trabalho</string>
+    <string name="lbl_txt_burn_out_classificacao_ilusao_trabalho">Classificação Ilusão do Trabalho</string>
+
+    <string name="lbl_txt_burn_out_somatorio_desgaste_psiquico">Somatório Desgaste Psiquico</string>
+    <string name="lbl_txt_burn_out_somatorio_classificacao_desgaste_psiquico">Classificação Desgaste Psiquico</string>
+
+    <string name="lbl_txt_burn_out_somatorio_classificacao_indolencia">Somatório Indolência</string>
+    <string name="lbl_txt_burn_out_classificacao_indolencia">Classificação Indolência</string>
+
+    <string name="lbl_txt_burn_out_somatorio_classificacao_indolencia_desgaste_psiquico">Total Indolência e Desgaste Psiquico</string>
+    <string name="lbl_txt_burn_out__classificacao_indolencia_desgaste_psiquico">Classificação Indolência e Desgaste Psiquico</string>
+
+    <string name="lbl_txt_burn_out_classificacao_somatorio_culpa"> Somatório Culpa</string>
+    <string name="lbl_txt_burn_out__classificacao_culpa"> Classificação Culpa</string>
+
+    <string name="lbl_txt_burn_out__classificacao_resultado_burnout"> Resultado classificação BurnOut</string>
+    <string name="lbl_txt_burn_out__classificacao_resultado_burnout_ilusao_trabalho"> Ilusão trabalho</string>
+    <string name="lbl_txt_burn_out__classificacao_resultado_burnout_indolencia_Desgaste"> Indolência e Desgaste </string>
+    <string name="lbl_txt_burn_out__classificacao_resultado_burnout_culpa"> Culpa </string>
+
+    <!--BurnOut_indice_sono_pitsburg-->
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg">Qualidade de sono de Pittsburg </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_1">Componente 1 Qualidade subjetiva do sono</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_2">Componente 2 Latência do sono </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_3">Componente 3 Duração do sono</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_4">Componente 4 Eficiência habitual do sono </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_5">Componente 5 Distúrbios do sono</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_6">Componente 6 Uso de medicação para dormir</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_7">Componente 7 Disfunção durante o dia</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_PSQI"> Pontuação Global do PSQI</string>
+
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_escore">Escore </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_soma">Soma </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_resposta">Resposta </string>
+
+    <!--Componente_1-->
+
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_1_3">Pontuação Componente 1 </string>
+
+    <!--Componente_2-->
+
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_2_1">Questão 2 </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_2_2">Questão 5a </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_2_3">Soma Questões 2 e 5 </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_2_4">Pontuação Componente 2 </string>
+
+    <!--Componente_3-->
+
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_3_pontuacao">Pontuação Componente 3 </string>
+
+    <!--Componente_4-->
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_4_1">  Número de horas dormidas </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_4_1_2">Número de número de horas no leito</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_4_1_3">Eficiência do sono (%)</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_4_pontuacao">Pontuação Componente 4 </string>
+
+    <!--Componente_5-->
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_5_1">  Soma Questões de 5b a 5j</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_5_2">  Pontuação de 5b a 5j</string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_5_pontuacao">Pontuação Componente 5 </string>
+    <!--Componente_6-->
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_6_pontuacao">Pontuação Componente 6 </string>
+    <!--Componente_7-->
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_7_1">  Questão 8 </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_7_2">  Questão 9 </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_7_3">  Soma Questões 8 e 9 </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_7_3_escore">  Escore 8 e 9 </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_7_pontuacao">Pontuação Componente 7 </string>
+
+    <!--PSQI-->
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_PSQI_pontuacao"> Pontuação </string>
+    <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_PSQI_qualidade"> Qualidade</string>
+
+
+
+    <!--errors-->
+    <string name = "erro_sql_pesquisa"> Erro ao inserir pesquisa</string>
+    <!--suxewswso-->
+    <string name = "sucesso_sql_pesquisa"> A pesquisa foi concluída com sucesso!</string>
+
+
+
+    <string name = "lbl_btn_dialog_sim"> OK</string>
+    <string name = "lbl_btn_dialog_nao"> Fechar</string>
+
+    <string name="lbl_btn_salavar_dados">Salvar dados</string>
+    <string name="lbl_btn_ver_todos_dados">Visualizar todos os dados </string>
+
+    <string name="titulo_ver_todos_dados">Dados completos da pesquisa: </string>
+    <string name="titulo_lista_ver_todos_dados">Lista dos dados </string>
+
+    <string name="titulo_entrevista_concluida">Entrevista Concluida! </string>
+
+
+
+    <!--erros dialog-->
+    <string name="dialog_generico_obrigatorio"> é obrigatório!</string>
+    <string name="dialog_sono_pitsburg_hora"> O horário deve ter ao menos 4 números HH:MM!</string>
+
+    <!--localizacao base sqlite-->
+    <string name="sqlitePath">/data/data/br.com.asb/databases/ASB.db</string>
+    <string name="btn_button_backup_name">Fazer Backup</string>
+    <string name="btn_button_backup_compartilhar">Compartilhar último Backup</string>
+
+
+    <string name="dialog_titulo_backup_sql">Backup da Base de dados</string>
+    <string name="dialog_corpo_backup_sql">Backup da Base de dados foi copiada com Sucesso!</string>
+
+    <string name="dialog_corpo_backup_sql_erro_01">Erro ao tentar criar o diretótio ASB</string>
+
+    <string name="dialog_lembrete_corpo_burnout">
+        "0 = Nunca \n
+        1 = Raramente: Algumas vezes por ano/semana \n
+        2 = Às vezes:Algumas vezes por mês \n
+        3 = Frequentemente:Algumas vezes por semana\n
+        4 = Muito frequentemente:Todos os dias"
+    </string>
+    <string name="dialog_lembrete_corpo_pittsburgh">"
+        0 = Nenhuma no último mês \n
+        1 = Menos de 1 vez/semana \n
+        2 = 1 ou 2 vezes/semana \n
+        3 = 2 ou mais vezes/semana"
+    </string>
+
+
+
+
+
+</resources>

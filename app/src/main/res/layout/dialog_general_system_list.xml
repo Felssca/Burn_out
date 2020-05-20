@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_gravity="center"
+	android:orientation="vertical"
+	app:cardBackgroundColor="@color/white"
+	app:cardCornerRadius="10dp"
+	app:cardElevation="4dp"
+	app:cardUseCompatPadding="true">
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minHeight="150dp"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:id="@+id/icone_dialog"
+				android:layout_width="32dp"
+				android:layout_height="53dp"
+				android:layout_gravity="center"
+				android:layout_marginLeft="20dp"
+				android:layout_marginTop="5dp"
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_success" />
+
+			<TextView
+				android:id="@+id/titulo_mensagem_dialog"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="15dp"
+				android:layout_marginTop="5dp"
+				android:fontFamily="sans-serif"
+				android:text="Tetse"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:textSize="16dp"
+				android:textStyle="bold" />
+
+		</LinearLayout>
+
+	<LinearLayout
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation ="vertical">
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1px"
+			android:layout_marginTop="10dp"
+			android:background="@color/text_5" />
+
+		<TextView
+			android:id="@+id/corpo_mensagem_dialog"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginLeft="22dp"
+			android:layout_marginRight="20dp"
+			android:layout_marginTop="10dp"
+			android:gravity="center"
+            android:text="Texto"
+			android:lineSpacingExtra="2dp" />
+
+
+		<Button
+			android:id="@+id/btn_voltar_dialog"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginTop="60dp"
+			android:layout_marginBottom="0dp"
+			android:text="Retornar"
+			android:textAllCaps="true"
+			android:shadowColor="@color/blue_loco"
+			android:textAppearance="?android:attr/textAppearanceButton"
+			android:textColor="@color/blue_loco"
+			android:textStyle="bold" />
+</LinearLayout>
+
+	</LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,8 @@
+<resources>
+
+ <style name="AppThemeNextGen" parent="AppTheme">
+         <item name="android:navigationBarColor">@color/colorPrimary</item>
+ </style>
+
+
+</resources>
