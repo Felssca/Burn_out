@@ -6,7 +6,6 @@ class ClassificacaoBurnOutBeans {
     var FkProfissional: Int = 0
 
     var somatorioIlusao:Int = 0
-    var ilusaoTrabalhoRersultado:Int = 0
     var classificacaoIlusaoTrabalho:String = ""
 
     var somatorioDesgastePsiquico:Int = 0
@@ -19,7 +18,6 @@ class ClassificacaoBurnOutBeans {
     var classificacaoDesgastePsiquicoIndolencia:String =""
 
     var somatorioCulpa: Int =0;
-    var totalCulpa: Int  = 0;
     var classificacaoCulpa: String =""
 
     //percentual

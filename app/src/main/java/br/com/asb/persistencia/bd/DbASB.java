@@ -18,13 +18,14 @@ import br.com.asb.bean.DiarioClasseBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
 import br.com.asb.dialog.GeneralSysDialog;
+import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.util.UtilDiversos;
 
 public class DbASB extends SQLiteOpenHelper {
 
 
     public static final String DB_NAME = "ASB.db";
-    public static final int VERSAO = 9;
+    public static final int VERSAO = 10;
 
     public static final String TABELA_CADASTRO_PROFISSIONAL = "tb_cadastro_profissional";
     public static final String TABELA_CADASTRO_BURNOUT = "tb_cadastro_burnout";
@@ -164,10 +165,8 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO = "text_classificacao_total_indolencia_desgaste_psiquico";
 
     public static final String SOMATORIO_CULPA = "num_somatorio_culpa";
-    public static final String RESULTADO_SOMATORIO_CULPA = "num_resultado_somatorio_culpa";
     public static final String CLASSIFICACAO_SOMATORIO_CULPA = "text_classificacao_somatorio_culpa";
 
-    public static final String CLASSIFICACAO_PERFIL = "text_classificacao_perfil";
     //classificacao Burn Out
     public static final String PERCENTUAL_ILUSAO_TRABALHO = "perc_ilusao_trabalho";
     public static final String CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO = "text_classificacao_ilusao_trabalho";
@@ -219,18 +218,17 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String MONTAR_TABELA_RESPOSTA_BURN_OUT = "CREATE TABLE IF NOT EXISTS " + TABELA_RESULTADO_BURN_OUT + "( "
             + ID_RESULTADO_BURN_OUT + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + ID_PROFISSIONAL + " INTEGER, "
+
             + SOMATORIO_ILUSAO_TRABALHO + " NUMERIC,"
             + CLASSIFICACAO_ILUSAO_TRABALHO + " TEXT,"
             + SOMATORIO_DESGASTE_PSIQUICO + " NUMERIC, "
-            + CLASSIFICACAO_DESGASTE_PSIQUICO+ " TEXT, "
+            + CLASSIFICACAO_DESGASTE_PSIQUICO+ " NUMERIC, "
             + SOMATORIO_INDOLENCIA+ " NUMERIC, "
-            + CLASSIFICACAO_SOMATORIO_INDOLENCIA+ " TEXT, "
+            + CLASSIFICACAO_SOMATORIO_INDOLENCIA+ " NUMERIC, "
             + TOTAL_INDOLENCIA_DESGASTE_PSIQUICO+ " NUMERIC, "
             + CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO+ " TEXT, "
             + SOMATORIO_CULPA+ " NUMERIC, "
-            + RESULTADO_SOMATORIO_CULPA+ " NUMERIC, "
             + CLASSIFICACAO_SOMATORIO_CULPA+ " TEXT, "
-            + CLASSIFICACAO_PERFIL+ " TEXT, "
             + PERCENTUAL_ILUSAO_TRABALHO+ " NUMERIC, "
             + CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO+ " TEXT, "
             + PERCENTUAL_INDOLENCIA_DESGASTE+ " NUMERIC, "
@@ -336,9 +334,6 @@ public class DbASB extends SQLiteOpenHelper {
             + PERGUNTA_ALIMENTO_9 + " INTEGER, "
             + PERGUNTA_ALIMENTO_10 + " INTEGER )";
 
-
-
-
     public DbASB(Context context) {
         super(context, DB_NAME, null, VERSAO);
     }
@@ -367,13 +362,6 @@ public class DbASB extends SQLiteOpenHelper {
 
     }
 
-    public long inserirResultadosBurnOut(){
-        long retornoCadasto = -1;
-        
-
-
-        return retornoCadasto;
-    }
 
 
     public long inserirCadastroAnamineseProfissional(AnamineseProfissionalBean anamineseProfissionalBean, BurnOutBean burnOutBean,
@@ -724,52 +712,47 @@ public class DbASB extends SQLiteOpenHelper {
     }
 
     /**
-     * listaTodosAlunosDoSistemaPorIDClasse
-     *
-     * @return
+     * Inserir resposta entrevistado RESULTADO BURNOUT
      */
-    public ArrayList<DiarioClasseBean> listarAlunosIDClasse(int id) {
+    public long inserirResultadosBurnOut(Integer id,ClassificacaoBurnOut classificacaoBurnOut) {
+        long retornoCadasto = -1;
 
-        ArrayList<DiarioClasseBean> consulatarAlunos = new ArrayList<>();
-/*
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValuesRespostaBurnOut = new ContentValues();
 
- */
-        return consulatarAlunos;
+        contentValuesRespostaBurnOut.put(ID_PROFISSIONAL,id);
+        contentValuesRespostaBurnOut.put(SOMATORIO_ILUSAO_TRABALHO,classificacaoBurnOut.
+                getClassificacaoBurnOutBeans().getSomatorioIlusao());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_ILUSAO_TRABALHO,classificacaoBurnOut.
+                getClassificacaoBurnOutBeans().getClassificacaoIlusaoTrabalho());
+        contentValuesRespostaBurnOut.put(SOMATORIO_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans()
+                .getSomatorioDesgastePsiquico());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_DESGASTE_PSIQUICO,classificacaoBurnOut
+                .getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquico());
+        contentValuesRespostaBurnOut.put(SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().
+                getSomatorioIndolencia());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().
+                getClassificacaoIndolencia());
+        contentValuesRespostaBurnOut.put(TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().
+                getDesgastePsiquicoIndolenciaTotal());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().
+                getClassificacaoDesgastePsiquicoIndolencia());
+        contentValuesRespostaBurnOut.put(SOMATORIO_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioCulpa());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualIlusao());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().
+                getClassifcacaoNivelIlusao());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().
+                getPercentuaDesgasteIndolencia());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().
+                getClassifcacaoNivelPsiquicoIndolencia());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_NIVEL_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentuaCulpa());
+
+        retornoCadasto = db.insert(TABELA_CADASTRO_BURNOUT, null, contentValuesRespostaBurnOut);
+
+        return retornoCadasto;
     }
 
-    /**
-     * Lista todas as classes
-     *
-     * @return
-     */
 
-    public ArrayList<DiarioClasseBean> listarProfissionaisEntrevistados() {
-
-        ArrayList<DiarioClasseBean> consultarProfissionaisCadastrados = new ArrayList<>();
-        /*
-
-         */
-        return consultarProfissionaisCadastrados;
-    }
-
-
-    /**
-     * Escolha por ID
-     *
-     * @param id
-     * @return
-     */
-
-    public ArrayList<DiarioClasseBean> listarClassesByID(int id) {
-
-        ArrayList<DiarioClasseBean> consultarClasses = new ArrayList<>();
-
-        /*
-
-
-         */
-        return consultarClasses;
-    }
 
 
 }

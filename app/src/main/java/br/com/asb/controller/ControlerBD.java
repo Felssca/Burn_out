@@ -8,6 +8,7 @@ import br.com.asb.bean.BurnOutBean;
 import br.com.asb.bean.DiarioClasseBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
+import br.com.asb.negocio.ClassificacaoBurnOut;
 
 public interface ControlerBD {
 
@@ -18,18 +19,7 @@ public interface ControlerBD {
                                               SonoPittsburghBeans sonoPittsburghBeans, AlimentacaoBeans alimentacaoBeans);
      public ListaTotalDadosPesquisa listarDadosProfissionalPorId(Integer id,Integer tabela);
 
-
-
-
-     //public ArrayList<>
-
-
-
-     public  ArrayList<DiarioClasseBean> listarClasses();
-     public ArrayList<DiarioClasseBean> listarClassesByID(int id);
-     public ArrayList<DiarioClasseBean> listarAlunosClassesByID(int id);
-
-
+     public long inserirResultadosBurnOut(Integer id,ClassificacaoBurnOut classificacaoBurnOut);
 
 
 

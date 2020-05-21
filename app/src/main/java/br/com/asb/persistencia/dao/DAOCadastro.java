@@ -13,6 +13,7 @@ import br.com.asb.bean.DiarioClasseBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
 import br.com.asb.controller.ControlerBD;
+import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.persistencia.bd.DbASB;
 
 
@@ -30,43 +31,8 @@ public class DAOCadastro  implements ControlerBD  {
 
     }
 
-    @Override
-    public ArrayList<DiarioClasseBean> listarClasses() {
 
-        ArrayList<DiarioClasseBean> diarioClasseBeans = new ArrayList<>();
 
-        try {
-
-            DbASB dbASB = new DbASB(App.getAppContext());
-            dbASB.getWritableDatabase();
-            diarioClasseBeans = dbASB.listarProfissionaisEntrevistados();
-
-        }catch(SQLiteException e){
-
-            Log.e("ERROR_BD",e.getMessage().toString());
-        }
-
-        return diarioClasseBeans;
-    }
-
-    @Override
-    public ArrayList<DiarioClasseBean> listarClassesByID(int id) {
-
-        ArrayList<DiarioClasseBean> diarioClasseBeans = new ArrayList<>();
-
-        try {
-
-            DbASB dbASB = new DbASB(App.getAppContext());
-            dbASB.getWritableDatabase();
-            diarioClasseBeans = dbASB.listarClassesByID(id);
-
-        }catch(SQLiteException e){
-
-            Log.e("ERROR_BD",e.getMessage().toString());
-        }
-
-        return diarioClasseBeans;
-    }
 
     @Override
     public ArrayList<AnamineseProfissionalBean> listarTodosProfissionaisCadastrados() {
@@ -86,33 +52,6 @@ public class DAOCadastro  implements ControlerBD  {
         return listaTodosProfissionais;
 
     }
-
-
-
-    @Override
-    public ArrayList<DiarioClasseBean> listarAlunosClassesByID(int id) {
-
-        ArrayList<DiarioClasseBean> diarioClasseBeans = new ArrayList<>();
-        try {
-
-            DbASB dbASB = new DbASB(App.getAppContext());
-            dbASB.getWritableDatabase();
-            diarioClasseBeans = dbASB.listarAlunosIDClasse(id);
-
-        }catch(SQLiteException e){
-
-            Log.e("ERROR_BD",e.getMessage().toString());
-        }
-
-        return diarioClasseBeans;
-
-
-
-    }
-
-
-
-
 
     @Override
     public long cadastarProfissionalPesquisa(AnamineseProfissionalBean anamineseProfissionalBean,
@@ -157,5 +96,25 @@ public class DAOCadastro  implements ControlerBD  {
 
 
         return listaTotalDadosPesquisas;
+    }
+
+    @Override
+    public long inserirResultadosBurnOut(Integer id,ClassificacaoBurnOut classificacaoBurnOut) {
+
+        long retorno = 0;
+
+        try{
+            DbASB dbASB = new DbASB(App.getAppContext());
+            dbASB.getWritableDatabase();
+            retorno = dbASB.inserirResultadosBurnOut(id,classificacaoBurnOut);
+
+        }catch(SQLiteException ex){
+
+            Log.e("ERROR_BD",ex.getMessage().toString());
+
+        }
+
+
+        return 0;
     }
 }

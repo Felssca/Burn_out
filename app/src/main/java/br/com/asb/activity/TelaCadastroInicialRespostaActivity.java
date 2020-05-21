@@ -253,6 +253,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro_inicial_respostas);
         View view = (View) this.getWindow().getDecorView().findViewById(android.R.id.content);
@@ -670,12 +671,17 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
 
         /**
-         * classificação resultados Burn out
+         * classificação resultados Burn out exibir na tela
          */
         ClassificacaoBurnOut classificacaoBurnOut = new ClassificacaoBurnOut();
         classificacaoBurnOut.calcularSindromeBurnOut(anamineseProfissionalBean, burnOutBean);
 
+        /**
+         *
+         *Inserir dados automaticamente RESPOSTA CLASSIFICACAO BURN OUT
+         */
 
+        DAOCadastro.getInstance().inserirResultadosBurnOut(id,classificacaoBurnOut);
 
 
         textViewResposta_classificacao_burn_out_somatorio_ilusao.setText(
@@ -727,7 +733,6 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
         textViewResposta_classificacao_burn_out_classificacao_indolencia_psiquica.setText(
                 classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquicoIndolencia()
-
         );
 
         //culpa

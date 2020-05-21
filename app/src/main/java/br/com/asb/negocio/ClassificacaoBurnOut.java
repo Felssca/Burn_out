@@ -130,8 +130,7 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
         classificacaoBurnOutBeans.setDesgastePsiquicoIndolenciaTotal(classificacaoDesgastePsiquicoIndolencia);
 
         classificacaoBurnOutBeans.setClassificacaoDesgastePsiquicoIndolencia(
-                calculoClassificacaoIndolenciaDesgastePsiquico(classificacaoDesgastePsiquicoIndolencia)
-        );
+                calculoClassificacaoIndolenciaDesgastePsiquico(classificacaoDesgastePsiquicoIndolencia));
 
     // culpa culpa 4,9,13,16,20
     //0 a 18 nivel critico 1
@@ -181,6 +180,8 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
                 resultado = Constantes.RESULTADO_BAIXO;
             }else if(mediaTrabalho >= 17 && mediaTrabalho <=20 ) {
                 resultado = Constantes.RESULTADO_MUITO_BAIXO;
+            }else{
+                resultado = Constantes.RESULTADO_MUITO_BAIXO;
             }
 
         return resultado;
@@ -214,7 +215,9 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
                 resultado = Constantes.RESULTADO_RUIM;
             }else if(media >=24 && media <=29 ){
                 resultado = Constantes.RESULTADO_MUITO_RUIM;
-            }else if(media <= 30 && media <=40  ) {
+            }else if(media >= 30 && media <=40  ) {
+                resultado = Constantes.RESULTADO_CRITICO;
+            }else{
                 resultado = Constantes.RESULTADO_CRITICO;
             }
 
@@ -271,7 +274,10 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
             }else if(porcentagem >=34 && porcentagem <=66){
                 nivel = Constantes.RESULTADO_NIVEL_BO_MEDIO;
 
-            }else if(porcentagem >=67 && porcentagem<=90){
+            }else if(porcentagem >=67 && porcentagem <=90){
+                nivel = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
+
+            }else{
                 nivel = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
 
             }
