@@ -14,11 +14,11 @@ class ClassificacaoSonoPittsburghBeans {
     var componente_2_escore_LatenciaSono_q2: Int = 0;
     var componente_2_resposta_LatenciaSono_q2: String = ""
 
-    //Componente 2 Examine a questão 5a e atribua a pontuação da seguinte maneira:
+    //Componente 2: Examine a questão 5a e atribua a pontuação da seguinte maneira:
     var componente_2_escore_q5: Int = 0;
     var componente_2_2_resposta_q5: String = ""
 
-    //3. Some a pontuação da questão 2 e 5a
+    //Componente 2: Some a pontuação da questão 2 e 5a
     var componente_2_4_soma: Int = 0
     var pontuacaoComponente_2: Int = 0;
 
@@ -29,15 +29,14 @@ class ClassificacaoSonoPittsburghBeans {
 
     //Componente 4: Eficiência habitual do sono:
     var componente_4_numHorasDormidas: Int = 0
-
+    //Componente 4:
     //{horário de levantar (questão 3) – horário de deitar (questão 1)}
     var componente_4_horarioLevantar: Int = 0
     var componente_4_horarioDormir: Int = 0
-
     var componente_4_numHorasLeito: Long = 0
-
+    //Componente 4:
     //efeiciencia sono %
-    var componente_4_percent_eficienticia_sono: Int =0;
+    //var componente_4_percent_eficienticia_sono: Int =0;
     var percentagem_componente_04: String=""
 
     var pontuacaoComponente_4 :Int = 0;
@@ -58,8 +57,6 @@ class ClassificacaoSonoPittsburghBeans {
     var pontuacao_questao_7_2: Int = 0
     var resposta_questao_7_2: String = ""
     var somatoria_questao_7_3_9_sum_8: Int =0
-
-
     var pontuacaoComponente_7: Int = 0
 
 

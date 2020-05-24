@@ -14,18 +14,17 @@ import java.util.ArrayList;
 import br.com.asb.bean.AlimentacaoBeans;
 import br.com.asb.bean.AnamineseProfissionalBean;
 import br.com.asb.bean.BurnOutBean;
-import br.com.asb.bean.DiarioClasseBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
-import br.com.asb.dialog.GeneralSysDialog;
 import br.com.asb.negocio.ClassificacaoBurnOut;
+import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.util.UtilDiversos;
 
 public class DbASB extends SQLiteOpenHelper {
 
 
     public static final String DB_NAME = "ASB.db";
-    public static final int VERSAO = 10;
+    public static final int VERSAO = 16;
 
     public static final String TABELA_CADASTRO_PROFISSIONAL = "tb_cadastro_profissional";
     public static final String TABELA_CADASTRO_BURNOUT = "tb_cadastro_burnout";
@@ -33,6 +32,7 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String TABELA_CADASTRO_FREQUENCIA_ALIMENTO = "tb_freqeuncia_alimento";
 //TB Resultado
     public static final String TABELA_RESULTADO_BURN_OUT = "tb_resultado_burnOut";
+    public static final String TABELA_RESULTADO_SONO_PITTSBURG = "tb_resultado_sonoPittsburg";
 
     /**
      * Tabela ANAMINESE PROF
@@ -166,7 +166,6 @@ public class DbASB extends SQLiteOpenHelper {
 
     public static final String SOMATORIO_CULPA = "num_somatorio_culpa";
     public static final String CLASSIFICACAO_SOMATORIO_CULPA = "text_classificacao_somatorio_culpa";
-
     //classificacao Burn Out
     public static final String PERCENTUAL_ILUSAO_TRABALHO = "perc_ilusao_trabalho";
     public static final String CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO = "text_classificacao_ilusao_trabalho";
@@ -187,15 +186,19 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String PONTUACAO_QUALIDADE_SUBJETIVA = "num_pontuacao_escore_qualidade_subjetiva";
     //Componente 2 Latencia Questão 2
     public static final String ESCORE_LATENCIA_DO_SONO = "num_escore_latencia_sono";
-    //Questao 5a
+    public static final String RESPOSTA_LATENCIA_DO_SONO = "text_resposta_latencia_sono";
+    //Componente 2:Questao 5a
     public static final String ESCORE_5_A = "num_escore_5_a";
-    //SOmatorio  da 2 e 5
-    public static final String SOMATORIO_QUESTOES_2_5 = "num_somatorio_questoes_2_5";
+    public static final String ESCORE_5_A_RESPOSTA = "text_escore_5_a";
+    //Componente 2:SOmatorio  da 2 e 5
+    public static final String SOMATORIO_QUESTOES_2_4 = "num_somatorio_questoes_2_5";
     public static final String PONTUACAO_COMPOENENTE_2 = "num_pontuacao_componente_2";
     //Componente 3 Duracao do sono
     public static final String ESCORE_COMPONENTE_3 = "num_escore_componente_3";
-    public static final String PONTUACAO_COMPONENTE_3 = "num_pontuacao_componente_3";
+    public static final String PONTUACAO_COMPONENTE_3_RESPOSTA = "text_pontuacao_componente_3";
     //Componente 4 Duracao do sono
+    public static final String NUM_HORAS_DORMIDAS = "num_horas_dormida";
+    public static final String NUM_HORAS_LEITO = "num_horas_leito";
     public static final String PERCENTUAL_EFICIENCIA_SONO = "perc_eficiencia_sono";
     public static final String PONTUACAO_COMPONENTE_4 = "num_pontuacao_componente_4";
     //Componente 5
@@ -203,6 +206,7 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String PONTUACAO_COMPONENTE_5 = "num_pontuacao_componente_5";
     //Componente 6
     public static final String ESCORE_COMPONENTE_6 = "num_escore_componente_6";
+    public static final String COMPONENTE_6_RESPOSTA = "text_componente_6";
     public static final String PONTUACAO_COMPONENTE_6 = "num_pontuacao_componente_6";
     //Compoente 7
     public static final String SOMA_COMPONENTE_7 = "num_soma_componente_7";
@@ -212,32 +216,61 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String PONTUACAO_GLOBAL_PSQI = "num_pontuacao_global_PSQI";
 
 
+
+
     /**
      * MONTAR TABELA RESPOSTA BURN_OUT
      */
     public static final String MONTAR_TABELA_RESPOSTA_BURN_OUT = "CREATE TABLE IF NOT EXISTS " + TABELA_RESULTADO_BURN_OUT + "( "
             + ID_RESULTADO_BURN_OUT + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + ID_PROFISSIONAL + " INTEGER, "
-
-            + SOMATORIO_ILUSAO_TRABALHO + " NUMERIC,"
+            + ID_PROFISSIONAL + " INTEGER,"
+            + SOMATORIO_ILUSAO_TRABALHO + " INTEGER,"
             + CLASSIFICACAO_ILUSAO_TRABALHO + " TEXT,"
-            + SOMATORIO_DESGASTE_PSIQUICO + " NUMERIC, "
-            + CLASSIFICACAO_DESGASTE_PSIQUICO+ " NUMERIC, "
-            + SOMATORIO_INDOLENCIA+ " NUMERIC, "
-            + CLASSIFICACAO_SOMATORIO_INDOLENCIA+ " NUMERIC, "
-            + TOTAL_INDOLENCIA_DESGASTE_PSIQUICO+ " NUMERIC, "
-            + CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO+ " TEXT, "
-            + SOMATORIO_CULPA+ " NUMERIC, "
-            + CLASSIFICACAO_SOMATORIO_CULPA+ " TEXT, "
-            + PERCENTUAL_ILUSAO_TRABALHO+ " NUMERIC, "
-            + CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO+ " TEXT, "
-            + PERCENTUAL_INDOLENCIA_DESGASTE+ " NUMERIC, "
-            + CLASSIFICACAO_INDOLENCIA_DESGASTE+ " TEXT, "
-            + PERCENTUAL_NIVEL_CULPA+ " NUMERIC ) ";
+            + SOMATORIO_DESGASTE_PSIQUICO + " INTEGER,"
+            + CLASSIFICACAO_DESGASTE_PSIQUICO + " INTEGER,"
+            + SOMATORIO_INDOLENCIA + " INTEGER,"
+            + CLASSIFICACAO_SOMATORIO_INDOLENCIA + " INTEGER,"
+            + TOTAL_INDOLENCIA_DESGASTE_PSIQUICO + " INTEGER,"
+            + CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO + " TEXT,"
+            + SOMATORIO_CULPA + " INTEGER,"
+            + CLASSIFICACAO_SOMATORIO_CULPA + " TEXT,"
+            + PERCENTUAL_ILUSAO_TRABALHO + " INTEGER,"
+            + CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO + " TEXT,"
+            + PERCENTUAL_INDOLENCIA_DESGASTE + " INTEGER,"
+            + CLASSIFICACAO_INDOLENCIA_DESGASTE + " TEXT,"
+            + PERCENTUAL_NIVEL_CULPA + " INTEGER ) ";
+
 
     /**
      * MONTAR TABELA RESPOSTA SONO DE PITTSBURG
      */
+    public static final String MONTAR_TABELA_RESULTADO_SONO_PITTSBURG = "CREATE TABLE IF NOT EXISTS " + TABELA_RESULTADO_SONO_PITTSBURG + "( "
+            + ID_RESULTADO_SONO_PITSBURG + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + ID_PROFISSIONAL + " INTEGER,"
+            + ESCORE_QUALIDADE_SUBJETIVA + " INTEGER,"
+            + CLASSIFICACAO_QUALIDADE_SUBJETIVA + " TEXT,"
+            + PONTUACAO_QUALIDADE_SUBJETIVA + " INTEGER,"
+            + ESCORE_LATENCIA_DO_SONO + " INTEGER,"
+            + RESPOSTA_LATENCIA_DO_SONO + " TEXT,"
+            + ESCORE_5_A + " INTEGER,"
+            + ESCORE_5_A_RESPOSTA + " TEXT,"
+            + SOMATORIO_QUESTOES_2_4 + " INTEGER,"
+            + PONTUACAO_COMPOENENTE_2 + " INTEGER,"
+            + ESCORE_COMPONENTE_3 + " INTEGER,"
+            + PONTUACAO_COMPONENTE_3_RESPOSTA + " TEXT,"
+            + NUM_HORAS_DORMIDAS + " INTEGER,"
+            + NUM_HORAS_LEITO + " INETEGER,"
+            + PERCENTUAL_EFICIENCIA_SONO + " TEXT,"
+            + PONTUACAO_COMPONENTE_4 + " INTEGER,"
+            + SOMA_QUESTOES_5B_5J + " INTEGER,"
+            + PONTUACAO_COMPONENTE_5 + " INTEGER,"
+            + COMPONENTE_6_RESPOSTA + " TEXT,"
+            + ESCORE_COMPONENTE_6 + " INTEGER,"
+            + PONTUACAO_COMPONENTE_6 + " INTEGER,"
+            + SOMA_COMPONENTE_7 + " INTEGER,"
+            + PONTUACAO_COMPONENTE_7 + " INTEGER,"
+            + CLASSIFICACAO_GLOBAL_PSQI + " TEXT,"
+            + PONTUACAO_GLOBAL_PSQI + " INTEGER ) ";
 
 
     /**
@@ -346,6 +379,7 @@ public class DbASB extends SQLiteOpenHelper {
         db.execSQL(MONTAR_QUAlIDADE_SONO_PITTSBURG);
         db.execSQL(MONTAR_FREQUENCIA_ALIMENTO);
         db.execSQL(MONTAR_TABELA_RESPOSTA_BURN_OUT);
+        db.execSQL(MONTAR_TABELA_RESULTADO_SONO_PITTSBURG);
 
 
     }
@@ -358,6 +392,7 @@ public class DbASB extends SQLiteOpenHelper {
         db.execSQL(" DROP TABLE IF EXISTS tb_qualidade_sono_pitsburgh");
         db.execSQL(" DROP TABLE IF EXISTS tb_freqeuncia_alimento");
         db.execSQL(" DROP TABLE IF EXISTS tb_resultado_burnOut");
+        db.execSQL(" DROP TABLE IF EXISTS tb_resultado_sonoPittsburg");
         onCreate(db);
 
     }
@@ -717,38 +752,89 @@ public class DbASB extends SQLiteOpenHelper {
     public long inserirResultadosBurnOut(Integer id,ClassificacaoBurnOut classificacaoBurnOut) {
         long retornoCadasto = -1;
 
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValuesRespostaBurnOut = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         contentValuesRespostaBurnOut.put(ID_PROFISSIONAL,id);
-        contentValuesRespostaBurnOut.put(SOMATORIO_ILUSAO_TRABALHO,classificacaoBurnOut.
-                getClassificacaoBurnOutBeans().getSomatorioIlusao());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_ILUSAO_TRABALHO,classificacaoBurnOut.
-                getClassificacaoBurnOutBeans().getClassificacaoIlusaoTrabalho());
-        contentValuesRespostaBurnOut.put(SOMATORIO_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans()
-                .getSomatorioDesgastePsiquico());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_DESGASTE_PSIQUICO,classificacaoBurnOut
-                .getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquico());
-        contentValuesRespostaBurnOut.put(SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().
-                getSomatorioIndolencia());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().
-                getClassificacaoIndolencia());
-        contentValuesRespostaBurnOut.put(TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().
-                getDesgastePsiquicoIndolenciaTotal());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().
-                getClassificacaoDesgastePsiquicoIndolencia());
+        contentValuesRespostaBurnOut.put(SOMATORIO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioIlusao());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoIlusaoTrabalho());
+        contentValuesRespostaBurnOut.put(SOMATORIO_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioDesgastePsiquico());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquico());
+        contentValuesRespostaBurnOut.put(SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioIndolencia());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoIndolencia());
+        contentValuesRespostaBurnOut.put(TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getDesgastePsiquicoIndolenciaTotal());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquicoIndolencia());
         contentValuesRespostaBurnOut.put(SOMATORIO_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioCulpa());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_SOMATORIO_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoCulpa());
         contentValuesRespostaBurnOut.put(PERCENTUAL_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualIlusao());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().
-                getClassifcacaoNivelIlusao());
-        contentValuesRespostaBurnOut.put(PERCENTUAL_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().
-                getPercentuaDesgasteIndolencia());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().
-                getClassifcacaoNivelPsiquicoIndolencia());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassifcacaoNivelIlusao());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentuaDesgasteIndolencia());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassifcacaoNivelPsiquicoIndolencia());
         contentValuesRespostaBurnOut.put(PERCENTUAL_NIVEL_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentuaCulpa());
 
-        retornoCadasto = db.insert(TABELA_CADASTRO_BURNOUT, null, contentValuesRespostaBurnOut);
+        retornoCadasto = db.insert(TABELA_RESULTADO_BURN_OUT, null, contentValuesRespostaBurnOut);
 
+        if (retornoCadasto == -1) {
+
+            System.out.println(" Erro Salvar dados tabela BurnOut");
+
+        } else {
+            db.close();
+            retornoCadasto = 1;
+        }
+        return retornoCadasto;
+    } /**
+     * Inserir resposta entrevistado RESULTADO SONOPITTSBURG
+     */
+    public long inserirResultadosSonoPittsburg(Integer id, ClassificacaoSonoPittsburgh classificacaoSonoPittsburgh) {
+        long retornoCadasto = -1;
+
+        ContentValues contentValuesRespostaSonoPittsburg = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+        contentValuesRespostaSonoPittsburg.put(ID_PROFISSIONAL,id);
+        //COmponente 1
+        contentValuesRespostaSonoPittsburg.put(ESCORE_QUALIDADE_SUBJETIVA,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_1_escore_qualidadeSubjetivaSono_q6());
+        contentValuesRespostaSonoPittsburg.put(CLASSIFICACAO_QUALIDADE_SUBJETIVA,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_1_resposta_qualidadeSubjetivaSono_q6());
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_QUALIDADE_SUBJETIVA,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacaoComponente_1());
+        //componente 2
+        contentValuesRespostaSonoPittsburg.put(ESCORE_LATENCIA_DO_SONO,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_2_escore_LatenciaSono_q2());
+        contentValuesRespostaSonoPittsburg.put(RESPOSTA_LATENCIA_DO_SONO,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_2_resposta_LatenciaSono_q2());
+        contentValuesRespostaSonoPittsburg.put(ESCORE_5_A,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_2_escore_q5());
+        contentValuesRespostaSonoPittsburg.put(ESCORE_5_A_RESPOSTA,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_2_2_resposta_q5());
+        contentValuesRespostaSonoPittsburg.put(SOMATORIO_QUESTOES_2_4,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_2_4_soma());
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_COMPOENENTE_2,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacaoComponente_2());
+        //componente 3
+        contentValuesRespostaSonoPittsburg.put(ESCORE_COMPONENTE_3,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacaoComponente_3());
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_COMPONENTE_3_RESPOSTA,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_3resposta_Questao_4());
+        //componente 4
+        contentValuesRespostaSonoPittsburg.put(NUM_HORAS_DORMIDAS,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_4_numHorasDormidas());
+        contentValuesRespostaSonoPittsburg.put(NUM_HORAS_LEITO,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_4_numHorasLeito());
+        contentValuesRespostaSonoPittsburg.put(PERCENTUAL_EFICIENCIA_SONO,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPercentagem_componente_04());
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_COMPONENTE_4,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacaoComponente_4());
+        //componente 5
+        contentValuesRespostaSonoPittsburg.put(SOMA_QUESTOES_5B_5J,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_5_somatoria_a_k());
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_COMPONENTE_5,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacaoComponente_5());
+        //componenete 6
+        contentValuesRespostaSonoPittsburg.put(COMPONENTE_6_RESPOSTA,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getComponente_6_resposta());
+        contentValuesRespostaSonoPittsburg.put(ESCORE_COMPONENTE_6,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacao_questao_6());
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_COMPONENTE_6,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacaoComponente_6());
+        //componente 7
+        contentValuesRespostaSonoPittsburg.put(SOMA_COMPONENTE_7,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getSomatoria_questao_7_3_9_sum_8());
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_COMPONENTE_7,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getPontuacaoComponente_7());
+        //resposta PSI
+        contentValuesRespostaSonoPittsburg.put(PONTUACAO_GLOBAL_PSQI,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getEscore_total_PSQI_componentes());
+        contentValuesRespostaSonoPittsburg.put(CLASSIFICACAO_GLOBAL_PSQI,classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getResultado_total_PSQI_componentes());
+
+        retornoCadasto = db.insert(TABELA_RESULTADO_SONO_PITTSBURG, null, contentValuesRespostaSonoPittsburg);
+
+        if (retornoCadasto == -1) {
+
+            System.out.println(" Erro Salvar dados tabela Sono Pittsburg");
+
+        } else {
+            db.close();
+            retornoCadasto = 1;
+        }
         return retornoCadasto;
     }
 

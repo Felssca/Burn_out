@@ -684,6 +684,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
         DAOCadastro.getInstance().inserirResultadosBurnOut(id,classificacaoBurnOut);
 
 
+
         textViewResposta_classificacao_burn_out_somatorio_ilusao.setText(
                 Integer.toString(burnOutBean.getPergunta_01()) + "+" +
                         Integer.toString(burnOutBean.getPergunta_05()) + "+" +
@@ -776,6 +777,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
         ClassificacaoSonoPittsburgh classificacaoSonoPittsburgh = new ClassificacaoSonoPittsburgh();
         classificacaoSonoPittsburgh.classificarSonoPitssburgh(sonoPittsburghBeans);
+        DAOCadastro.getInstance().inserirResultadosSonoPittsburg(id,classificacaoSonoPittsburgh);
 
         //Classificacao Sono Pittsburgh
 

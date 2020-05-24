@@ -14,6 +14,7 @@ import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
 import br.com.asb.controller.ControlerBD;
 import br.com.asb.negocio.ClassificacaoBurnOut;
+import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.persistencia.bd.DbASB;
 
 
@@ -114,6 +115,25 @@ public class DAOCadastro  implements ControlerBD  {
 
         }
 
+
+        return 0;
+    }
+
+    @Override
+    public long inserirResultadosSonoPittsburg(Integer id, ClassificacaoSonoPittsburgh classificacaoSonoPittsburgh) {
+
+        long retorno = 0;
+
+        try{
+            DbASB dbASB = new DbASB(App.getAppContext());
+            dbASB.getWritableDatabase();
+            retorno = dbASB.inserirResultadosSonoPittsburg(id,classificacaoSonoPittsburgh);
+
+        }catch(SQLiteException ex){
+
+            Log.e("ERROR_BD",ex.getMessage().toString());
+
+        }
 
         return 0;
     }
