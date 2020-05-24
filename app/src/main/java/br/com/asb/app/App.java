@@ -3,7 +3,7 @@ package br.com.asb.app;
 import android.app.Application;
 import android.content.Context;
 
-public class App extends Application {
+public class  App extends Application {
 
     private static Context context;
     private static App instance;

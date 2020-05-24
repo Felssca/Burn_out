@@ -122,33 +122,6 @@ public class ListarProfissionaisEntrevistadosActivity extends AppCompatActivity 
             });
 
 
-
-
-
-
-
-
-
-         //   ((LineHolder) holder).ano.setText(profissionaisEntrevistadoBean.getAnoLetivo());
-          //  ((LineHolder) holder).qtAlunos.setText(Integer.toString(profissionaisEntrevistadoBean.getAlunoMatricula().size()));
-       //     ((LineHolder) holder).id.setText(Integer.toString(profissionaisEntrevistadoBean.getId()));
-      //      ((LineHolder) holder).setText(Integer.toString(profissionaisEntrevistadoBean.getId()));
-
-
-
-         //   ((LineHolder) holder).listaMedidasAlunos.setOnClickListener(new View.OnClickListener() {
-           //     @Override
-             //   public void onClick(View v) {
-
-           //         sendTabelaDiarioClasse(id);
-
-               //     }
-
-
-
-            //              });
-
-
         }
 
         @Override

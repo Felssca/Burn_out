@@ -54,7 +54,6 @@ public class TelaMontarDadosCompletosActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_montar_lista_profissionais_cadastrados);
         id = (Integer)getIntent().getSerializableExtra("ID");
-
         intiView();
     }
 

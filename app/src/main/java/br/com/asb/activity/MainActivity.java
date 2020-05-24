@@ -22,6 +22,12 @@ public class MainActivity extends Activity {
 
     }
 
+    public void ClassificarPesquisa(View view){
+
+        startActivity(new Intent(MainActivity.this,ClassificacaoASBActivity.class));
+
+    }
+
     public void cadastrarAnamnase(View view) {
 
         startActivity(new Intent(MainActivity.this, TelaCadastroInicialActivity.class));

@@ -33,8 +33,6 @@ public class DAOCadastro  implements ControlerBD  {
     }
 
 
-
-
     @Override
     public ArrayList<AnamineseProfissionalBean> listarTodosProfissionaisCadastrados() {
 

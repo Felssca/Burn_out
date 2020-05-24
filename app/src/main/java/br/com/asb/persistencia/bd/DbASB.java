@@ -381,18 +381,17 @@ public class DbASB extends SQLiteOpenHelper {
         db.execSQL(MONTAR_TABELA_RESPOSTA_BURN_OUT);
         db.execSQL(MONTAR_TABELA_RESULTADO_SONO_PITTSBURG);
 
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL(" DROP TABLE IF EXISTS tb_cadastro_profissional");
-        db.execSQL(" DROP TABLE IF EXISTS tb_cadastro_burnout");
-        db.execSQL(" DROP TABLE IF EXISTS tb_qualidade_sono_pitsburgh");
-        db.execSQL(" DROP TABLE IF EXISTS tb_freqeuncia_alimento");
-        db.execSQL(" DROP TABLE IF EXISTS tb_resultado_burnOut");
-        db.execSQL(" DROP TABLE IF EXISTS tb_resultado_sonoPittsburg");
+       // db.execSQL(" DROP TABLE IF EXISTS tb_cadastro_profissional");
+     //   db.execSQL(" DROP TABLE IF EXISTS tb_cadastro_burnout");
+      // db.execSQL(" DROP TABLE IF EXISTS tb_qualidade_sono_pitsburgh");
+     //   db.execSQL(" DROP TABLE IF EXISTS tb_freqeuncia_alimento");
+    //    db.execSQL(" DROP TABLE IF EXISTS tb_resultado_burnOut");
+    //    db.execSQL(" DROP TABLE IF EXISTS tb_resultado_sonoPittsburg");
         onCreate(db);
 
     }
