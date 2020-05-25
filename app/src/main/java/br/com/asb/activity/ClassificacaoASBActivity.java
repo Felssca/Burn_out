@@ -65,14 +65,14 @@ public class ClassificacaoASBActivity extends AppCompatActivity {
         //lista total de cadastros
         ArrayList<AnamineseProfissionalBean> listaEntrevistados = new ArrayList<>();
         listaEntrevistados = DAOCadastro.getInstance().listarTodosProfissionaisCadastrados();
-        int totalEntrevisatdos = listaEntrevistados.size();
+        int totalEntrevistados = listaEntrevistados.size();
 
         AlimentacaoBeans alimentacaoBeans;
         SonoPittsburghBeans sonoPittsburghBeans;
         AnamineseProfissionalBean anamineseProfissionalBean;
         BurnOutBean burnOutBean;
 
-        for(int i = 1; i < totalEntrevisatdos; i++) {
+        for(int i = 1; i <= totalEntrevistados; i++) {
             id = i;
 
             anamineseProfissionalBean = new AnamineseProfissionalBean();
