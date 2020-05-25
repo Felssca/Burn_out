@@ -357,6 +357,8 @@
     <string name="lbl_btn_salavar_dados">Salvar dados</string>
     <string name="lbl_btn_ver_todos_dados">Visualizar todos os dados </string>
 
+    <string name="lbl_btn_executar_classificacao">Executar Classificação </string>
+
     <string name="titulo_ver_todos_dados">Dados completos da pesquisa: </string>
     <string name="titulo_lista_ver_todos_dados">Lista dos dados </string>
 

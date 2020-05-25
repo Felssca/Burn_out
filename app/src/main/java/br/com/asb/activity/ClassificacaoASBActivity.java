@@ -2,6 +2,8 @@ package br.com.asb.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -19,12 +21,44 @@ import br.com.asb.util.Constantes;
 
 public class ClassificacaoASBActivity extends AppCompatActivity {
 
+    private Button buttonClassificar;
+
+    int id = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_tela_processo_pesquisa);
+        View view = (View) this.getWindow().getDecorView().findViewById(android.R.id.content);
+        initView();
+
     }
 
-    int id = 1;
+    private void initView(){
+
+        buttonClassificar = (Button) findViewById(R.id.btn_executar_classificacao);
+        acaoButton();
+
+    }
+    private void acaoButton() {
+
+        buttonClassificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    classificarPesquisaToda();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+    }
+
 
     private void classificarPesquisaToda(){
 

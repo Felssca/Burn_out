@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 
     }
 
-    public void ClassificarPesquisa(View view){
+    public void classificarPesquisa(View view){
 
         startActivity(new Intent(MainActivity.this,ClassificacaoASBActivity.class));
 

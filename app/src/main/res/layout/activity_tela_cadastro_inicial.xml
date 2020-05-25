@@ -1750,6 +1750,19 @@
                     android:layout_marginTop="20dp"
                     android:hint="@string/lbl_txt_burn_18"
                     android:singleLine="false" />
+
+                <EditText
+                    android:id="@+id/questao_sono_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:singleLine="false" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -2002,19 +2015,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/questao_sono_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:inputType="number"
-                    android:maxLength="5"
-                    android:maxLines="1"
-                    android:singleLine="false" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="wrap_content"></android.support.design.widget.TextInputLayout>
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -681,7 +681,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
          *Inserir dados automaticamente RESPOSTA CLASSIFICACAO BURN OUT
          */
 
-        DAOCadastro.getInstance().inserirResultadosBurnOut(id,classificacaoBurnOut);
+     //   DAOCadastro.getInstance().inserirResultadosBurnOut(id,classificacaoBurnOut);
 
 
 
@@ -777,7 +777,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
         ClassificacaoSonoPittsburgh classificacaoSonoPittsburgh = new ClassificacaoSonoPittsburgh();
         classificacaoSonoPittsburgh.classificarSonoPitssburgh(sonoPittsburghBeans);
-        DAOCadastro.getInstance().inserirResultadosSonoPittsburg(id,classificacaoSonoPittsburgh);
+       // DAOCadastro.getInstance().inserirResultadosSonoPittsburg(id,classificacaoSonoPittsburgh);
 
         //Classificacao Sono Pittsburgh
 

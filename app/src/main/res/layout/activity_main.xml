@@ -8,9 +8,6 @@
     android:orientation="vertical"
     android:fillViewport="true"
     tools:context=".activity.MainActivity">
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -170,7 +167,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:onClick="ClassificarPesquisa"
+            android:onClick="classificarPesquisa"
             style = "@style/BotaoTelaPrincipal"
             app:cardCornerRadius="16dp"
             app:cardElevation="12dp"
