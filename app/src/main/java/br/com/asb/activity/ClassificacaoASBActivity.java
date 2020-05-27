@@ -14,6 +14,7 @@ import br.com.asb.bean.BurnOutBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
 import br.com.asb.dialog.GeneralSysDialog;
+import br.com.asb.negocio.ClassificacaoAlimentacao;
 import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.persistencia.dao.DAOCadastro;
@@ -117,9 +118,21 @@ public class ClassificacaoASBActivity extends AppCompatActivity {
 
             /**
              *
-             *Inserir dados automaticamente RESPOSTA CLASSIFICACAO BURN OUT
+             *Inserir dados automaticamente SONOPITSBURG
              */
             DAOCadastro.getInstance().inserirResultadosSonoPittsburg(id, classificacaoSonoPittsburgh);
+
+            /**
+             * CLASSIFICAR alimentação
+             */
+            ClassificacaoAlimentacao classificacaoAlimentacao = new ClassificacaoAlimentacao();
+            classificacaoAlimentacao.calcularIMC(anamineseProfissionalBean);
+            classificacaoAlimentacao.classificarFrequenciaAlimentar(alimentacaoBeans);
+            /**
+             *
+             *Inserir dados automaticamente RESPOSTA CLASSIFICACAO ALIMENTACAO
+             */
+            DAOCadastro.getInstance().inserirResultadosAlimentacao(id,classificacaoAlimentacao);
 
         }
 

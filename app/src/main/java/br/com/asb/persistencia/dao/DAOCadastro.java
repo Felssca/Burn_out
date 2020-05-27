@@ -13,6 +13,7 @@ import br.com.asb.bean.DiarioClasseBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
 import br.com.asb.controller.ControlerBD;
+import br.com.asb.negocio.ClassificacaoAlimentacao;
 import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.persistencia.bd.DbASB;
@@ -126,6 +127,24 @@ public class DAOCadastro  implements ControlerBD  {
             DbASB dbASB = new DbASB(App.getAppContext());
             dbASB.getWritableDatabase();
             retorno = dbASB.inserirResultadosSonoPittsburg(id,classificacaoSonoPittsburgh);
+
+        }catch(SQLiteException ex){
+
+            Log.e("ERROR_BD",ex.getMessage().toString());
+
+        }
+
+        return 0;
+    }
+
+    @Override
+    public long inserirResultadosAlimentacao(Integer id, ClassificacaoAlimentacao classificacaoAlimentacao) {
+        long retorno = 0;
+
+        try{
+            DbASB dbASB = new DbASB(App.getAppContext());
+            dbASB.getWritableDatabase();
+            retorno = dbASB.inserirResultadoAlimentacao(id,classificacaoAlimentacao);
 
         }catch(SQLiteException ex){
 

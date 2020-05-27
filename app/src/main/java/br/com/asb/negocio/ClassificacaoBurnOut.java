@@ -247,7 +247,8 @@ public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissio
 
             }else if(media >= 18 && media <=29 ) {
                 resultado = Constantes.RESULTADO_NIVEL_CRITICO_2;
-            }}else{
+            }
+         }else{
              resultado = Constantes.RESULTADO_NIVEL_CRITICO_0;
 
          }

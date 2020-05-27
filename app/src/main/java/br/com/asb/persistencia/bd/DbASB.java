@@ -16,6 +16,7 @@ import br.com.asb.bean.AnamineseProfissionalBean;
 import br.com.asb.bean.BurnOutBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
+import br.com.asb.negocio.ClassificacaoAlimentacao;
 import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.util.UtilDiversos;
@@ -33,6 +34,7 @@ public class DbASB extends SQLiteOpenHelper {
 //TB Resultado
     public static final String TABELA_RESULTADO_BURN_OUT = "tb_resultado_burnOut";
     public static final String TABELA_RESULTADO_SONO_PITTSBURG = "tb_resultado_sonoPittsburg";
+    public static final String TABELA_RESULTADO_ALIMENTACAO = "tb_resultado_alimentacao";
 
     /**
      * Tabela ANAMINESE PROF
@@ -215,7 +217,26 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String CLASSIFICACAO_GLOBAL_PSQI = "txt_classificacao_global_PSQI";
     public static final String PONTUACAO_GLOBAL_PSQI = "num_pontuacao_global_PSQI";
 
+    /**
+     * TABELA RESPOSTA CLASSIFICACAO ALIMENTAÇÃO
+     */
+    public static final String ID_RESULTADO_ALIMENTACAO = "id_ResultadoPittsBurg";
+    //  public static final String ID_FK_PROFISSIONAL = "fk_profissional";
+    public static final String NUM_IMC = "num_imc";
+    public static final String RESULTADO_IMC = "text_imc";
+    public static final String RESPOSTA_RESULTADO_CORRETAS = "num_resposta_corretas_total";
+    public static final String CLASSIFICACAO_RESULTADO_CORRETAS = "classificacao_resposta_corretas_total";
 
+    /**
+     * MONTAR TABELA RESPOSTA ALIMENTACAO
+     */
+    public static final String MONTAR_TABELA_RESPOSTA_ALIMENTACAO = "CREATE TABLE IF NOT EXISTS " + TABELA_RESULTADO_ALIMENTACAO + "( "
+            + ID_RESULTADO_ALIMENTACAO + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + ID_PROFISSIONAL + " INTEGER,"
+            + NUM_IMC + " NUMBER,"
+            + RESULTADO_IMC + " TEXT,"
+            + RESPOSTA_RESULTADO_CORRETAS + " NUMBER,"
+            + CLASSIFICACAO_RESULTADO_CORRETAS + " TEXT ) ";
 
 
     /**
@@ -271,6 +292,8 @@ public class DbASB extends SQLiteOpenHelper {
             + PONTUACAO_COMPONENTE_7 + " INTEGER,"
             + CLASSIFICACAO_GLOBAL_PSQI + " TEXT,"
             + PONTUACAO_GLOBAL_PSQI + " INTEGER ) ";
+
+
 
 
     /**
@@ -380,6 +403,7 @@ public class DbASB extends SQLiteOpenHelper {
         db.execSQL(MONTAR_FREQUENCIA_ALIMENTO);
         db.execSQL(MONTAR_TABELA_RESPOSTA_BURN_OUT);
         db.execSQL(MONTAR_TABELA_RESULTADO_SONO_PITTSBURG);
+        db.execSQL(MONTAR_TABELA_RESPOSTA_ALIMENTACAO);
 
     }
 
@@ -836,7 +860,34 @@ public class DbASB extends SQLiteOpenHelper {
         }
         return retornoCadasto;
     }
+    /**
+     * Inserir resposta entrevistado RESULTADO alimentacao
+     */
+    public long inserirResultadoAlimentacao(Integer id, ClassificacaoAlimentacao classificacaoAlimentacao) {
+        long retornoCadasto = -1;
 
+        ContentValues contentValuesRespostaAlimentacao = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        contentValuesRespostaAlimentacao.put(ID_PROFISSIONAL,id);
+        contentValuesRespostaAlimentacao.put(NUM_IMC,classificacaoAlimentacao.getClassificacaoAlimentacaoBeans().getIMC());
+        contentValuesRespostaAlimentacao.put(RESULTADO_IMC,classificacaoAlimentacao.getClassificacaoAlimentacaoBeans().getResultado_IMC());
+        contentValuesRespostaAlimentacao.put(RESPOSTA_RESULTADO_CORRETAS,classificacaoAlimentacao.getClassificacaoAlimentacaoBeans().getRespostas_resultados_corretas());
+        contentValuesRespostaAlimentacao.put(CLASSIFICACAO_RESULTADO_CORRETAS,classificacaoAlimentacao.getClassificacaoAlimentacaoBeans().getClassificacao_resultado_respostas());
+
+
+        retornoCadasto = db.insert(TABELA_RESULTADO_ALIMENTACAO, null, contentValuesRespostaAlimentacao);
+
+        if (retornoCadasto == -1) {
+
+            System.out.println(" Erro Salvar dados tabela alimentacao");
+
+        } else {
+            db.close();
+            retornoCadasto = 1;
+        }
+        return retornoCadasto;
+    }
 
 
 
