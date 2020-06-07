@@ -15,6 +15,7 @@ import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
 import br.com.asb.dialog.GeneralSysDialog;
 import br.com.asb.negocio.ClassificacaoAlimentacao;
+import br.com.asb.negocio.ClassificacaoAtividadeFisica;
 import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.persistencia.dao.DAOCadastro;
@@ -133,6 +134,21 @@ public class ClassificacaoASBActivity extends AppCompatActivity {
              *Inserir dados automaticamente RESPOSTA CLASSIFICACAO ALIMENTACAO
              */
             DAOCadastro.getInstance().inserirResultadosAlimentacao(id,classificacaoAlimentacao);
+
+            /**
+             * CLASSIFICAR ATIVIDADE FÍSICA TABELA SEPARADA
+             */
+
+            ClassificacaoAtividadeFisica classificacaoAtividadeFisica = new ClassificacaoAtividadeFisica();
+            classificacaoAtividadeFisica.classificarAtividadeFisica(anamineseProfissionalBean);
+
+            /**
+             *
+             *Inserir dados automaticamente RESPOSTA CLASSIFICACAO ALIMENTACAO
+             */
+            DAOCadastro.getInstance().inserirResultadosAtividadeFisica(id,classificacaoAtividadeFisica);
+
+
 
         }
 

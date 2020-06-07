@@ -17,6 +17,7 @@ import br.com.asb.bean.BurnOutBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
 import br.com.asb.negocio.ClassificacaoAlimentacao;
+import br.com.asb.negocio.ClassificacaoAtividadeFisica;
 import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.util.UtilDiversos;
@@ -35,6 +36,7 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String TABELA_RESULTADO_BURN_OUT = "tb_resultado_burnOut";
     public static final String TABELA_RESULTADO_SONO_PITTSBURG = "tb_resultado_sonoPittsburg";
     public static final String TABELA_RESULTADO_ALIMENTACAO = "tb_resultado_alimentacao";
+    public static final String TABELA_RESULTADO_ATIVIDADE_FISICA = "tb_resultado_atividade_fisica";
 
     /**
      * Tabela ANAMINESE PROF
@@ -150,34 +152,45 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String PERGUNTA_ALIMENTO_10 = "num_resposta_alimento_10";
 
     /**
-     * TABELA RESULTADO BURN_OUT
+     * #TABELA RESULTADO BURN_OUT#******************************************
      */
     public static final String ID_RESULTADO_BURN_OUT = "id_ResultadoBurnOut";
     //  public static final String ID_FK_PROFISSIONAL = "fk_profissional";
 
+    /*ILUSAO TRABALHO*/
     public static final String SOMATORIO_ILUSAO_TRABALHO = "num_somatorio_ilusao_trabalho";
     public static final String CLASSIFICACAO_ILUSAO_TRABALHO = "text_classificacao_somatorio_ilusao_trabalho";
-
-    public static final String SOMATORIO_DESGASTE_PSIQUICO = "num_somatorio_desgaste_psiquico";
-    public static final String CLASSIFICACAO_DESGASTE_PSIQUICO = "text_classificacao_desgaste_psiquico";
-
-    public static final String SOMATORIO_INDOLENCIA = "num_somatorio_indolencia";
-    public static final String CLASSIFICACAO_SOMATORIO_INDOLENCIA = "text_classificacao_indolencia";
-    public static final String TOTAL_INDOLENCIA_DESGASTE_PSIQUICO = "num_total_indolencia_desgaste_psiquico";
-    public static final String CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO = "text_classificacao_total_indolencia_desgaste_psiquico";
-
-    public static final String SOMATORIO_CULPA = "num_somatorio_culpa";
-    public static final String CLASSIFICACAO_SOMATORIO_CULPA = "text_classificacao_somatorio_culpa";
-    //classificacao Burn Out
-    public static final String PERCENTUAL_ILUSAO_TRABALHO = "perc_ilusao_trabalho";
+    public static final String PERCENTUAL_PARCIAL_ILUSAO_TRABALHO = "num_percentual_parcial_ilusao_trabalho";
     public static final String CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO = "text_classificacao_ilusao_trabalho";
 
-    public static final String PERCENTUAL_INDOLENCIA_DESGASTE = "perc_indolencia_desgaste";
-    public static final String CLASSIFICACAO_INDOLENCIA_DESGASTE = "text_classificacao_indolencia_desgaste";
-    public static final String PERCENTUAL_NIVEL_CULPA = "perc_nivel_culpa";
+    /*DESGASTE*/
+    public static final String SOMATORIO_DESGASTE_PSIQUICO = "num_somatorio_desgaste_psiquico";
+    public static final String PERCENTUAL_PARCIAL_DESGASTE_PSIQUICO = "num_percentual_parcial_desgaste_psiquico";
+    public static final String CLASSIFICACAO_RESULTADO_DESGASTE_PSIQUICO = "num_classificacao_resultado_desgaste_psiquico";
+    public static final String CLASSIFICACAO_DESGASTE_PSIQUICO = "text_classificacao_desgaste_psiquico";
+
+    /*INDOLENCIA*/
+    public static final String SOMATORIO_INDOLENCIA = "num_somatorio_indolencia";
+    public static final String PERCENTUAL_PARCIAL_INDOLENCIA= "num_percentual_parcial_indolencia";
+    public static final String CLASSIFICACAO_SOMATORIO_INDOLENCIA = "text_classificacao_indolencia";
+
+    /*INDOLENCIA + DESGASTE PSIQUICO*/
+    public static final String TOTAL_INDOLENCIA_DESGASTE_PSIQUICO = "num_total_indolencia_desgaste_psiquico";
+    public static final String PERCENTUAL_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO = "num_perc_classificacao_total_indolencia_desgaste_psiquico";
+    public static final String CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO = "text_classificacao_total_indolencia_desgaste_psiquico";
+
+    /* CULPA*/
+    public static final String SOMATORIO_CULPA = "num_somatorio_culpa";
+    public static final String PERCENTUAL_FINAL_CULPA = "num_percentual_final_culpa";
+    public static final String CLASSIFICACAO_SOMATORIO_CULPA = "text_classificacao_somatorio_culpa";
+
+    /*CLASSIFICACAO BURNOUT*/
+    public static final String CLASSIFICACAO_NIVEL_PSQ_INDO = "text_classificacao_nivel_psq_indo";
+    public static final String SOMATORIO_PERCENTUAL_TOTAL_BURNOUT = "num_somatorio_percentual_total_burnOut";
+    public static final String CLASSIFICACAO_SOMATORIO_PERCENTUAL_TOTAL_BURNOUT = "text_classificacao_somatorio_percentual_total_burnOut";
 
     /**
-     * TABELA RESULTADO QUALIDADE DE SONO DE PITTSBURG
+     * #TABELA RESULTADO QUALIDADE DE SONO DE PITTSBURG#***************************************
      */
 
     public static final String ID_RESULTADO_SONO_PITSBURG = "id_ResultadoPittsBurg";
@@ -228,8 +241,17 @@ public class DbASB extends SQLiteOpenHelper {
     public static final String CLASSIFICACAO_RESULTADO_CORRETAS = "classificacao_resposta_corretas_total";
 
     /**
-     * MONTAR TABELA RESPOSTA ALIMENTACAO
+     * TABELA RESPOSTA CLASSIFICACAO ATIVIDADE FISICA
      */
+    public static final String ID_RESULTADO_ATIVIDADE_FISICA = "id_resultado_atividadeFisica";
+    //  public static final String ID_FK_PROFISSIONAL = "fk_profissional";
+    public static final String NUM_RESULTADO_ATIVIDADE_FISICA = "num_resultado";
+    public static final String CLASSIFICACAO_RESULTADO_ATIVIDADE_FISICA= "text_resultado";
+
+    /**
+     * MONTAR TABELA RESPOSTA ATIVIDADE FISICA
+     */
+
     public static final String MONTAR_TABELA_RESPOSTA_ALIMENTACAO = "CREATE TABLE IF NOT EXISTS " + TABELA_RESULTADO_ALIMENTACAO + "( "
             + ID_RESULTADO_ALIMENTACAO + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + ID_PROFISSIONAL + " INTEGER,"
@@ -237,6 +259,15 @@ public class DbASB extends SQLiteOpenHelper {
             + RESULTADO_IMC + " TEXT,"
             + RESPOSTA_RESULTADO_CORRETAS + " NUMBER,"
             + CLASSIFICACAO_RESULTADO_CORRETAS + " TEXT ) ";
+
+    /**
+     * MONTAR TABELA RESPOSTA ALIMENTACAO
+     */
+    public static final String MONTAR_TABELA_RESPOSTA_ATIVIDADE_FISICA = "CREATE TABLE IF NOT EXISTS " + TABELA_RESULTADO_ATIVIDADE_FISICA + "( "
+            + ID_RESULTADO_ATIVIDADE_FISICA + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + ID_PROFISSIONAL + " INTEGER,"
+            + NUM_RESULTADO_ATIVIDADE_FISICA + " NUMBER,"
+            + CLASSIFICACAO_RESULTADO_ATIVIDADE_FISICA + " TEXT ) ";
 
 
     /**
@@ -247,19 +278,24 @@ public class DbASB extends SQLiteOpenHelper {
             + ID_PROFISSIONAL + " INTEGER,"
             + SOMATORIO_ILUSAO_TRABALHO + " INTEGER,"
             + CLASSIFICACAO_ILUSAO_TRABALHO + " TEXT,"
+            + PERCENTUAL_PARCIAL_ILUSAO_TRABALHO + " INTEGER,"
+            + CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO + " TEXT,"
             + SOMATORIO_DESGASTE_PSIQUICO + " INTEGER,"
-            + CLASSIFICACAO_DESGASTE_PSIQUICO + " INTEGER,"
+            + PERCENTUAL_PARCIAL_DESGASTE_PSIQUICO + " INTEGER,"
+            + CLASSIFICACAO_RESULTADO_DESGASTE_PSIQUICO + " INTEGER,"
+            + CLASSIFICACAO_DESGASTE_PSIQUICO + " TEXT,"
             + SOMATORIO_INDOLENCIA + " INTEGER,"
-            + CLASSIFICACAO_SOMATORIO_INDOLENCIA + " INTEGER,"
+            + PERCENTUAL_PARCIAL_INDOLENCIA + " INTEGER,"
+            + CLASSIFICACAO_SOMATORIO_INDOLENCIA + " TEXT,"
             + TOTAL_INDOLENCIA_DESGASTE_PSIQUICO + " INTEGER,"
+            + PERCENTUAL_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO + " INTEGER,"
             + CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO + " TEXT,"
             + SOMATORIO_CULPA + " INTEGER,"
+            + PERCENTUAL_FINAL_CULPA + " INTEGER,"
             + CLASSIFICACAO_SOMATORIO_CULPA + " TEXT,"
-            + PERCENTUAL_ILUSAO_TRABALHO + " INTEGER,"
-            + CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO + " TEXT,"
-            + PERCENTUAL_INDOLENCIA_DESGASTE + " INTEGER,"
-            + CLASSIFICACAO_INDOLENCIA_DESGASTE + " TEXT,"
-            + PERCENTUAL_NIVEL_CULPA + " INTEGER ) ";
+            + SOMATORIO_PERCENTUAL_TOTAL_BURNOUT + " INTEGER,"
+            + CLASSIFICACAO_SOMATORIO_PERCENTUAL_TOTAL_BURNOUT + " TEXT,"
+            + CLASSIFICACAO_NIVEL_PSQ_INDO + " TEXT ) ";
 
 
     /**
@@ -404,6 +440,7 @@ public class DbASB extends SQLiteOpenHelper {
         db.execSQL(MONTAR_TABELA_RESPOSTA_BURN_OUT);
         db.execSQL(MONTAR_TABELA_RESULTADO_SONO_PITTSBURG);
         db.execSQL(MONTAR_TABELA_RESPOSTA_ALIMENTACAO);
+        db.execSQL(MONTAR_TABELA_RESPOSTA_ATIVIDADE_FISICA);
 
     }
 
@@ -779,21 +816,32 @@ public class DbASB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         contentValuesRespostaBurnOut.put(ID_PROFISSIONAL,id);
+        /* ILUSÃO DO TRABALHO*/
         contentValuesRespostaBurnOut.put(SOMATORIO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioIlusao());
         contentValuesRespostaBurnOut.put(CLASSIFICACAO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoIlusaoTrabalho());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_PARCIAL_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualParcialIlusao());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoNivelIlusao());
+        /* DESGASTE PSIQUICO*/
         contentValuesRespostaBurnOut.put(SOMATORIO_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioDesgastePsiquico());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_PARCIAL_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualParcialDesgastePsiquico());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_RESULTADO_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoResultadoDesgastePsiquico());
         contentValuesRespostaBurnOut.put(CLASSIFICACAO_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquico());
+        /* INDOLENCIA*/
         contentValuesRespostaBurnOut.put(SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioIndolencia());
         contentValuesRespostaBurnOut.put(CLASSIFICACAO_SOMATORIO_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoIndolencia());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_PARCIAL_INDOLENCIA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualParcialIndolencia());
+        /* INDOLENCIA + DESGASTE PSIQUICO*/
         contentValuesRespostaBurnOut.put(TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getDesgastePsiquicoIndolenciaTotal());
         contentValuesRespostaBurnOut.put(CLASSIFICACAO_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquicoIndolencia());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_TOTAL_INDOLENCIA_DESGASTE_PSIQUICO ,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentuaDesgasteIndolencia());
+        /*CULPA*/
         contentValuesRespostaBurnOut.put(SOMATORIO_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatorioCulpa());
+        contentValuesRespostaBurnOut.put(PERCENTUAL_FINAL_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualFinalCulpa());
         contentValuesRespostaBurnOut.put(CLASSIFICACAO_SOMATORIO_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoCulpa());
-        contentValuesRespostaBurnOut.put(PERCENTUAL_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualIlusao());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_RESULTADO_ILUSAO_TRABALHO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassifcacaoNivelIlusao());
-        contentValuesRespostaBurnOut.put(PERCENTUAL_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentuaDesgasteIndolencia());
-        contentValuesRespostaBurnOut.put(CLASSIFICACAO_INDOLENCIA_DESGASTE,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassifcacaoNivelPsiquicoIndolencia());
-        contentValuesRespostaBurnOut.put(PERCENTUAL_NIVEL_CULPA,classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentuaCulpa());
+        /* CLASSIFICACAO_FINAL*/
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_NIVEL_PSQ_INDO,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassifcacaoNivelPsiquicoIndolencia());
+        contentValuesRespostaBurnOut.put(SOMATORIO_PERCENTUAL_TOTAL_BURNOUT,classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatoriaPercentualTotalBurnOUT());
+        contentValuesRespostaBurnOut.put(CLASSIFICACAO_SOMATORIO_PERCENTUAL_TOTAL_BURNOUT,classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoSomatorioTotalBurnOUT());
 
         retornoCadasto = db.insert(TABELA_RESULTADO_BURN_OUT, null, contentValuesRespostaBurnOut);
 
@@ -888,7 +936,32 @@ public class DbASB extends SQLiteOpenHelper {
         }
         return retornoCadasto;
     }
+    /**
+     * Inserir resultado atividade Fisica
+     */
 
+    public long inserirResultadoAtividadeFisica(Integer id, ClassificacaoAtividadeFisica classificacaoAtividadeFisica) {
+        long retornoCadasto = -1;
+
+        ContentValues contentValuesRespostaAtividadeFisica = new ContentValues();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        contentValuesRespostaAtividadeFisica.put(ID_PROFISSIONAL,id);
+        contentValuesRespostaAtividadeFisica.put(NUM_RESULTADO_ATIVIDADE_FISICA,classificacaoAtividadeFisica.getClassificacaoAtividadeFisicaBeans().getNumResultado());
+        contentValuesRespostaAtividadeFisica.put(CLASSIFICACAO_RESULTADO_ATIVIDADE_FISICA,classificacaoAtividadeFisica.getClassificacaoAtividadeFisicaBeans().getTextResultado());
+
+        retornoCadasto = db.insert(TABELA_RESULTADO_ATIVIDADE_FISICA, null, contentValuesRespostaAtividadeFisica);
+
+        if (retornoCadasto == -1) {
+
+            System.out.println(" Erro Salvar dados tabela educacao fisica");
+
+        } else {
+            db.close();
+            retornoCadasto = 1;
+        }
+        return retornoCadasto;
+    }
 
 
 }

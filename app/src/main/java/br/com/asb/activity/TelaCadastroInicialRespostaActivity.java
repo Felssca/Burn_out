@@ -709,7 +709,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
         );
 
         textViewResposta_classificacao_burn_out_classificaco_desgaste_psiquico.setText(Integer.toString(classificacaoBurnOut
-                .getClassificacaoBurnOutBeans().getClassificacaoDesgastePsiquico()));
+                .getClassificacaoBurnOutBeans().getClassificacaoResultadoDesgastePsiquico()));
 
         //indolencia
         textViewResposta_classificacao_burn_out_somatorio_indolencia.setText(
@@ -724,7 +724,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
         );
         textViewResposta_classificacao_burn_out_classificaco_indolencia.setText(
-                Integer.toString(classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoIndolencia())
+                (classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoIndolencia())
         );
         //classifcacao indolencia + psiquico
 
@@ -754,10 +754,10 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
         //Classificacao Geral
         textViewResposta_classificacao_burn_out_classificacao_final_ilusao.setText(
-                Integer.toString(classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualIlusao()) + "%"
+                Integer.toString(classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualFinalCulpa()) + "%"
         );
         textViewResposta_classificacao_burn_out_classificacao_final_ilusao_niveis.setText(
-                classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassifcacaoNivelIlusao()
+                classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoNivelIlusao()
         );
 
         textViewResposta_classificacao_burn_out_classificacao_final_indolencia_desgaste.setText(
@@ -770,7 +770,7 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
 
         );
         textViewResposta_classificacao_burn_out_classificacao_final_culpa.setText(
-                Integer.toString(classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentuaCulpa()) + "%"
+                Integer.toString(classificacaoBurnOut.getClassificacaoBurnOutBeans().getPercentualFinalCulpa()) + "%"
 
         );
 

@@ -55,8 +55,6 @@ public static String RESULTADO_COMPONENTE_soma_7_0_4 = "Boa";
 public static String RESULTADO_COMPONENTE_soma_7_5_10 = "Ruim";
 public static String RESULTADO_COMPONENTE_soma_7_maior_10 = "Presença de distúrbio do sono";
 
-
-
 //Resultado
 public static String RESULTADO_NIVEL_BO_MUITO_BAIXO = "Nível Muito Baixo";
 public static String RESULTADO_NIVEL_BO_BAIXO = "Nível Baixo";
@@ -70,8 +68,10 @@ public static int TABELA_CADASTRO_SONO_PITSBURGH= 2;
 public static int TABELA_CADASTRO_FREQUENCIA_ALIMENTO = 3;
 
 //Campos opicionais
+public static String OPICIONAL = "NÃO DECLARADO";
 
-    public static String OPICIONAL = "NÃO DECLARADO";
+//Nenhuma dass opções
+public static String DEFAULT = "NÃO AFERIDO";
 
 
 

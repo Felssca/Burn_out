@@ -25,9 +25,9 @@ public class ClassificacaoAtividadeFisica {
         this.classificacaoAtividadeFisicaBeans = classificacaoAtividadeFisicaBeans;
     }
 
-    ClassificacaoAtividadeFisica() {
+    public ClassificacaoAtividadeFisica() {
 
-        classificacaoAtividadeFisicaBeans = new ClassificacaoAtividadeFisicaBeans();
+
 
     }
 
@@ -54,25 +54,29 @@ public class ClassificacaoAtividadeFisica {
         // intensidade 5 - fraca
         //intensidade 6 - media
         //intendidade 7 - forte
+        classificacaoAtividadeFisicaBeans = new ClassificacaoAtividadeFisicaBeans();
 
 
-        int numResultado = 0;
+         int numResultado = 0;
 
         if (anamineseProfissionalBean.getPraticaAtividadeFisica() == true) {
 
             switch (anamineseProfissionalBean.getQtAtividadeVezesSemana()) {
-                case (1): {
+                case (1):
 
-                    numResultado = 3;
-                }
-                case (2): {
+                    numResultado = RISCO;
 
-                    numResultado = 3;
-                }
+                break;
+                case (2):
 
-                case (3): {
+                    numResultado = RISCO;
+
+                break;
+
+                case (3):
+
                     if (anamineseProfissionalBean.getIntensidadeLeve()) {
-                        numResultado = 2;
+                        numResultado = INADEQUADO;
 
                     } else if (anamineseProfissionalBean.getIntensidadeMedia()) {
 
@@ -83,14 +87,19 @@ public class ClassificacaoAtividadeFisica {
 
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
+                    }else{
 
+                        numResultado = NAO_INFORMADO;
                     }
 
-                }
-                case (4): {
+
+                 break;
+
+
+                case (4):
 
                     if (anamineseProfissionalBean.getIntensidadeLeve()) {
-                        numResultado = 2;
+                        numResultado = INADEQUADO;
 
                     } else if (anamineseProfissionalBean.getIntensidadeMedia()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
@@ -99,27 +108,14 @@ public class ClassificacaoAtividadeFisica {
                     } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
+                    }else{
+
+                        numResultado = NAO_INFORMADO;
                     }
-                }
 
-                case (5): {
+                break;
 
-                    if (anamineseProfissionalBean.getIntensidadeLeve()) {
-                        int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
-                        numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), LEVE);
-
-                    } else if (anamineseProfissionalBean.getIntensidadeMedia()) {
-                        int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
-                        numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), MEDIA);
-
-                    } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
-                        int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
-                        numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }
-                }
-
-
-                case (6): {
+                case (5):
 
                     if (anamineseProfissionalBean.getIntensidadeLeve()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
@@ -132,10 +128,14 @@ public class ClassificacaoAtividadeFisica {
                     } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }
+                    }else{
+                        numResultado = NAO_INFORMADO;
 
-                }
-                case (7): {
+                    }
+                break;
+
+
+                case (6):
 
                     if (anamineseProfissionalBean.getIntensidadeLeve()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
@@ -148,13 +148,36 @@ public class ClassificacaoAtividadeFisica {
                     } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }
-                }
+                    }else{
+                        numResultado = NAO_INFORMADO;
 
-                default: {
+                    }
+
+                break;
+                case (7):
+
+                    if (anamineseProfissionalBean.getIntensidadeLeve()) {
+                        int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
+                        numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), LEVE);
+
+                    } else if (anamineseProfissionalBean.getIntensidadeMedia()) {
+                        int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
+                        numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), MEDIA);
+
+                    } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
+                        int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
+                        numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
+                    }else{
+
+                        numResultado = NAO_INFORMADO;
+                    }
+
+                break;
+
+                default:
                     numResultado = NAO_INFORMADO;
 
-                }
+
 
             }
 
@@ -181,7 +204,7 @@ public class ClassificacaoAtividadeFisica {
 
         //intnsidade fraca
         switch (intensidade) {
-            case (LEVE): {
+            case (LEVE):
 
                 if (isHoras(tempo) == true) {
                     if (tempo > 1) {
@@ -201,9 +224,8 @@ public class ClassificacaoAtividadeFisica {
                     }
 
                 }
-
-            }
-            case (MEDIA): {
+            break;
+            case (MEDIA):
 
                 if (isHoras(tempo) == true) {
                     if (tempo > 1) {
@@ -223,8 +245,8 @@ public class ClassificacaoAtividadeFisica {
                     }
 
                 }
-            }
-            case (MEDIA3X): {
+            break;
+            case (MEDIA3X):
 
                 if (isHoras(tempo) == true) {
                     if (tempo > 1) {
@@ -244,8 +266,8 @@ public class ClassificacaoAtividadeFisica {
                     }
 
                 }
-            }
-            case (ALTA): {
+            break;
+            case (ALTA):
                 if (isHoras(tempo) == true) {
                     if (tempo > 1) {
                         resultDuracao = INADEQUADO;
@@ -265,8 +287,10 @@ public class ClassificacaoAtividadeFisica {
 
                 }
 
-            }
+            break;
 
+            default:
+                resultDuracao = NAO_INFORMADO;
 
         }
 
@@ -333,9 +357,9 @@ public class ClassificacaoAtividadeFisica {
     private int alterarDuracao(String duracao) {
 
         int numDuracao = 0;
-        int minutos = 0;
-        int horas = 0;
-        String parcial = null;
+
+        String parcial = "";
+
 //h, : mim mi
         int size = duracao.length();
 
@@ -352,29 +376,29 @@ public class ClassificacaoAtividadeFisica {
 
         } else if (size > 1) {
 
+            boolean possuiLetra = false;
+            char[] duracaoChar = duracao.toCharArray();
 
-            for (int x = 0; x < duracao.length(); x++) {
 
-                if (duracao.charAt(x) == 'n') {
-                    parcial += duracao.replace("n", "");
-                }
-                if (duracao.charAt(x) == 'm') {
-                    parcial += duracao.replace("m", "");
-                }
-                if (duracao.charAt(x) == 'h') {
-                    parcial += duracao.replace("h", "");
-                }
-                if (duracao.charAt(x) == ':') {
-                    parcial += duracao.replace(":", "");
-                }
-                if (duracao.charAt(x) == 'i') {
-                    parcial += duracao.replace("i", "");
-                }
+            for(int i=0; i <duracaoChar.length; i++){
 
+                if(Character.isDigit(duracaoChar[i])){
+                    parcial+=duracaoChar[i];
+                }else{
+                    possuiLetra = true;
+                }
 
             }
 
-            numDuracao = Integer.parseInt(parcial);
+            if(possuiLetra == true){
+                numDuracao = Integer.parseInt(parcial);
+            }else{
+                parcial = duracao;
+                numDuracao = Integer.parseInt(parcial);
+
+            }
+
+
 
 
         }

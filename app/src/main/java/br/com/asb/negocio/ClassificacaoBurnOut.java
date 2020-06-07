@@ -22,336 +22,190 @@ public class ClassificacaoBurnOut {
 
 
 
-
-    /*
-    20 itens
-    4 subescalas
-    Ilusão pelo trabalho (cinco itens)
-    Desgaste psíquico (quatro itens)
-    Indolência (seis itens)
-    Culpa (cinco itens)
-
-    0 a 4
-     2 ponto intermediario
-      o a pontuação 2
- Cada subescala
-foi calculada pela média da pontuação dos itens que
-a compunham.
-
- Baixas pontuações na Ilusão pelo
-trabalho (< 2) e altas pontuações em Desgaste psíquico,
-Indolência e Culpa (≥ 2) supõe altos níveis do síndrome
-de burnout
-
-     */
-
-
-
-public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissionalBean,BurnOutBean burnOutBean){
-
-        /**
-         * Media pontuação de ilusão
-         * Baixas pontuações na Ilusão pelo
-         * trabalho (< 2) e altas pontuações em Desgaste psíquico,
-         * Indolência e Culpa (≥ 2) supõe altos níveis do síndrome
-         *
-         * ilusão pelo trabalho sao perguntas 1,5,10,15,19
-         * desgaste psiquico 8,12,17,18
-         * indolencia        3,2,6,7,11,14
-         * culpa4,9,13,16,20
-         */
-
-        /**
-         *
-         * ilusāo pelo trabalho tem 5 perguntas,
-         * somando as respostas o máximo que pode dar é 20, podemos dividir nas subescalas
-         * critico
-         * muito ruim
-         * ruim
-         * médio
-         * baixo
-         * muito baixo
-         *
-
-         */
-
-
-        //
-   //     ClassificacaoBurnOutBeans classificacaoBurnOutBeans = new ClassificacaoBurnOutBeans();
+    public void calcularSindromeBurnOut(AnamineseProfissionalBean anamineseProfissionalBean, BurnOutBean burnOutBean) {
 
 
         classificacaoBurnOutBeans = new ClassificacaoBurnOutBeans();
 
+
+        /* ILUSÃO DO TRABALHO*/
         int somatorioIlusaoTrabalho;
         int classificacaoIlusaoTrabalho;
 
         //* ilusão pelo trabalho sao perguntas 1,5,10,15,19
 
-        somatorioIlusaoTrabalho =  burnOutBean.getPergunta_01()+ burnOutBean.getPergunta_05()+ burnOutBean.getPergunta_10()
-                +burnOutBean.getPergunta_15()+burnOutBean.getPergunta_19();
+        somatorioIlusaoTrabalho = burnOutBean.getPergunta_01() + burnOutBean.getPergunta_05() + burnOutBean.getPergunta_10()
+                + burnOutBean.getPergunta_15() + burnOutBean.getPergunta_19();
         classificacaoIlusaoTrabalho = somatorioIlusaoTrabalho;
-
-        classificacaoBurnOutBeans.setClassificacaoIlusaoTrabalho(calculoClassificacaoIlusaoTrabalho(classificacaoIlusaoTrabalho));
+        classificacaoBurnOutBeans.setClassificacaoIlusaoTrabalho(ClassificacaoBurnOutCalculos.getInstance().calculoClassificacaoIlusaoTrabalho(classificacaoIlusaoTrabalho));
+        classificacaoBurnOutBeans.setPercentualParcialIlusao(ClassificacaoBurnOutCalculos.getInstance().calculoPercParcialIlusaoTrabalho(somatorioIlusaoTrabalho));
         classificacaoBurnOutBeans.setSomatorioIlusao(somatorioIlusaoTrabalho);
-        calculoClassificacaoIlusaoTrabalho(classificacaoIlusaoTrabalho);
+        classificacaoBurnOutBeans.setClassificacaoNivelIlusao(ClassificacaoBurnOutCalculos.getInstance().calcularNiveisEstresseIlusao(somatorioIlusaoTrabalho));
 
+        /* DESGASTE PSIQUICO*/
 
         //desgaste psiquico   8,12,17,18
-
+        //Para isso vamos somar as respostas de cada componente separadamente.
+        //Questões de Desgaste Psíquico são 8,12,17,18.
+        //0 a 5 =nível baixo = 10%
+        //6 a 11 =nível médio = 20%
+        //12 a 16 =nível elevado = 30%
 
         int somatorioDesgastePsiquico;
         int classificacaoDesgastePsiquico;
 
-        somatorioDesgastePsiquico = burnOutBean.getPergunta_08()+burnOutBean.getPergunta_12()+burnOutBean.getPergunta_17()+burnOutBean.getPergunta_18();
+        somatorioDesgastePsiquico = burnOutBean.getPergunta_08() + burnOutBean.getPergunta_12() + burnOutBean.getPergunta_17()
+                + burnOutBean.getPergunta_18();
         classificacaoDesgastePsiquico = somatorioDesgastePsiquico;
-
         classificacaoBurnOutBeans.setSomatorioDesgastePsiquico(somatorioDesgastePsiquico);
-        classificacaoBurnOutBeans.setClassificacaoDesgastePsiquico(classificacaoDesgastePsiquico);
+        classificacaoBurnOutBeans.setClassificacaoDesgastePsiquico(ClassificacaoBurnOutCalculos.getInstance().calculoClassificacaoDesgastePsiquico(somatorioDesgastePsiquico));
+        classificacaoBurnOutBeans.setPercentualParcialDesgastePsiquico(ClassificacaoBurnOutCalculos.getInstance().calculoPercParcialDesgastePsiquico(somatorioDesgastePsiquico));
+        classificacaoBurnOutBeans.setClassificacaoResultadoDesgastePsiquico(somatorioDesgastePsiquico);
 
-      //  somatorioDesgastePsiquico
+        /* INDOLENCIA*/
 
-    //  indolencia        3,2,6,7,11,14
+        //  indolencia  3,2,6,7,11,14
+        /*
+        Questões de Indolência são 2,3,6,7,11,14
+         0 a 8=nível baixo =10%
+         9 a 16=nível médio =20%
+         17 a 24= nível elevado =30%
+         */
 
         int somatorioIndolencia;
         int classificacaoIndolencia;
 
-        int classificacaoDesgastePsiquicoIndolencia;
-
-        somatorioIndolencia = burnOutBean.getPergunta_03()+burnOutBean.getPergunta_02()+burnOutBean.getPergunta_06()+burnOutBean.getPergunta_07()+
-                burnOutBean.getPergunta_11()+burnOutBean.getPergunta_14();
+        somatorioIndolencia = burnOutBean.getPergunta_03() + burnOutBean.getPergunta_02() + burnOutBean.getPergunta_06() + burnOutBean.getPergunta_07() +
+                burnOutBean.getPergunta_11() + burnOutBean.getPergunta_14();
         classificacaoIndolencia = somatorioIndolencia;
 
         classificacaoBurnOutBeans.setSomatorioIndolencia(somatorioIndolencia);
-        classificacaoBurnOutBeans.setClassificacaoIndolencia(classificacaoIndolencia);
+        classificacaoBurnOutBeans.setClassificacaoIndolencia(ClassificacaoBurnOutCalculos.getInstance().calculoClassificacaoIndolencia(somatorioIndolencia));
+        classificacaoBurnOutBeans.setPercentualParcialIndolencia(ClassificacaoBurnOutCalculos.getInstance().claculoPercIndolencia(somatorioIndolencia));
 
-        //classificacao_geral
+        /* INDOLENCIA + DESGASTE PSIQUICO */
+        int classificacaoDesgastePsiquicoIndolencia;
 
-        classificacaoDesgastePsiquicoIndolencia = classificacaoIndolencia+classificacaoDesgastePsiquico;
+        classificacaoDesgastePsiquicoIndolencia = classificacaoIndolencia + classificacaoDesgastePsiquico;
         classificacaoBurnOutBeans.setDesgastePsiquicoIndolenciaTotal(classificacaoDesgastePsiquicoIndolencia);
-
         classificacaoBurnOutBeans.setClassificacaoDesgastePsiquicoIndolencia(
-                calculoClassificacaoIndolenciaDesgastePsiquico(classificacaoDesgastePsiquicoIndolencia));
+                ClassificacaoBurnOutCalculos.getInstance().calculoClassificacaoIndolenciaDesgastePsiquico(classificacaoDesgastePsiquicoIndolencia));
 
-    // culpa culpa 4,9,13,16,20
-    //0 a 18 nivel critico 1
-    //18 a 20 nivel critico 2
 
-    int somatorioCulpa;
-    int totalCulp;
+        /* CULPA */
 
-        somatorioCulpa = burnOutBean.getPergunta_04()+burnOutBean.getPergunta_09()+burnOutBean.getPergunta_13()+burnOutBean.getPergunta_16()+
-            burnOutBean.getPergunta_20();
 
-          totalCulp = somatorioCulpa;
+        // culpa culpa 4,9,13,16,20
+        //0 a 18 nivel critico 1
+        //18 a 20 nivel critico 2
+        int somatorioCulpa;
+        int totalCulp;
 
+        somatorioCulpa = burnOutBean.getPergunta_04() + burnOutBean.getPergunta_09() + burnOutBean.getPergunta_13() + burnOutBean.getPergunta_16() +
+                burnOutBean.getPergunta_20();
+
+        totalCulp = somatorioCulpa;
         classificacaoBurnOutBeans.setSomatorioCulpa(somatorioCulpa);
+        classificacaoBurnOutBeans.setClassificacaoCulpa(ClassificacaoBurnOutCalculos.getInstance()
+        .calculoPercentualFinalCulpa(totalCulp));
+
+        /* RESULTADO FINAL BURNOUT:*/
 
 
-        ///Calcular resultado total dos testesBurnOUT:
-        calcularPercentil(classificacaoBurnOutBeans);
-        classificacaoBurnOutBeans.setClassificacaoCulpa(calculoClassificacaoCulpa(totalCulp));
+
+
+        //SOMAR OS 3 NÍVEIS
+        // Ou seja, cada componente corresponde a 30% das respostas.
+        /*
+        Nível elevado em ilusão pelo trabalho =30%
+        nível médio em indolência =20%
+        nível baixo em  desgaste psíquico =10%
+         */
+
+        int somatorioFinalBurnOut = classificacaoBurnOutBeans.getSomatorioIlusao() + classificacaoBurnOutBeans.getSomatorioIndolencia()
+                +classificacaoBurnOutBeans.getSomatorioDesgastePsiquico();
+        classificacaoBurnOutBeans.setSomatoriaPercentualTotalBurnOUT(somatorioFinalBurnOut);
+
+        classificacaoBurnOutBeans.setClassificacaoSomatorioTotalBurnOUT(ClassificacaoBurnOutCalculos.getInstance().calcularResultadoSomatoriaBurnOutPercentual(somatorioFinalBurnOut));
+
+
+
+
+
+
 
     }
 
-    /**
-     * calcula a media do trabaho
-     * @param mediaTrabalho
-     * @return
-     */
-    private String calculoClassificacaoIlusaoTrabalho(int mediaTrabalho){
-        String resultado = null;
-
-        //ilusão pelo trabalho tem perguntas invertidas. quanto mais perto do 0 maior nivel de burnout
-
-        /**
-         *
-         * 4 a 8 ruim
-         * 9 a 12 médio
-         * 13 a 16 baixo
-         * 17 a 20 muito baixo
-         *
-         */
-            if(mediaTrabalho <= 8){
-            resultado = Constantes.RESULTADO_RUIM;
-
-            }else if(mediaTrabalho >= 9 && mediaTrabalho <=12 ){
-                resultado = Constantes.RESULTADO_MÉDIO;
-            }else if(mediaTrabalho >= 13 && mediaTrabalho <=16 ){
-                resultado = Constantes.RESULTADO_BAIXO;
-            }else if(mediaTrabalho >= 17 && mediaTrabalho <=20 ) {
-                resultado = Constantes.RESULTADO_MUITO_BAIXO;
-            }else{
-                resultado = Constantes.RESULTADO_MUITO_BAIXO;
-            }
-
-        return resultado;
-    }  /**
-     * calcula a media do desgaste desgaste psiquico e indolencia
-     * @param media
-     * @return
-     */
-    private String calculoClassificacaoIndolenciaDesgastePsiquico(int media){
-        String resultado = null;
-
-
-
-        /**
-         *30 a 40 nivel critico
-         * 24 a 29 muito ruim
-         * 18 a 23 ruim
-         * 12 a 17 médio
-         * 6 a 11 baixo
-         * 0 a 5 muito baixo
-         *
-         */
-
-            if(media >=0 && media <=5){
-                resultado = Constantes.RESULTADO_MUITO_BAIXO;
-            }else if(media >=6 && media <=11){
-                resultado = Constantes.RESULTADO_BAIXO;
-            }else if(media >=12 && media <=17 ){
-                resultado = Constantes.RESULTADO_MÉDIO;
-            }else if(media >=18 && media <=23){
-                resultado = Constantes.RESULTADO_RUIM;
-            }else if(media >=24 && media <=29 ){
-                resultado = Constantes.RESULTADO_MUITO_RUIM;
-            }else if(media >= 30 && media <=40  ) {
-                resultado = Constantes.RESULTADO_CRITICO;
-            }else{
-                resultado = Constantes.RESULTADO_CRITICO;
-            }
 
 
 
 
-        return resultado;
-    }
-/**
-     * calcula a media do desgaste desgaste psiquico e indolencia
-     * @param media
-     * @return
-     */
-    private String calculoClassificacaoCulpa(int media){
-        String resultado = null;
 
 
-        /**
-         *
-         *
-         */
-         if(classificacaoBurnOutBeans.getPercentuaDesgasteIndolencia()>=90){
 
-
-            if(media <=17 ){
-            resultado = Constantes.RESULTADO_NIVEL_CRITICO_1;
-
-            }else if(media >= 18 && media <=29 ) {
-                resultado = Constantes.RESULTADO_NIVEL_CRITICO_2;
-            }
-         }else{
-             resultado = Constantes.RESULTADO_NIVEL_CRITICO_0;
-
-         }
-
-        return resultado;
-    }
 
 
     /**
-     * Calcular Níveis exceto Ilusão
-     * @param porcentagem
-     * @return
-     */
-    private String calcularNiveisEstressePsicoIndolencia(int porcentagem){
-
-        String nivel = null;
-
-            if(porcentagem<=10){
-            nivel = Constantes.RESULTADO_NIVEL_BO_MUITO_BAIXO;
-
-            }else if(porcentagem >= 11 && porcentagem <= 33){
-                nivel = Constantes.RESULTADO_NIVEL_BO_BAIXO;
-
-            }else if(porcentagem >=34 && porcentagem <=66){
-                nivel = Constantes.RESULTADO_NIVEL_BO_MEDIO;
-
-            }else if(porcentagem >=67 && porcentagem <=90){
-                nivel = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
-
-            }else{
-                nivel = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
-
-            }
-
-        return nivel;
-    }
- /**
-     * Calcular Níveis Ilusao
-     * @param porcentagem
-     * @return
-     */
-    private String calcularNiveisEstresseIlusao(int porcentagem){
-
-        String nivel = null;
-
-            if(porcentagem<=10){
-            nivel = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
-
-            }else if(porcentagem >=11 && porcentagem <=33){
-                nivel = Constantes.RESULTADO_NIVEL_BO_MEDIO;
-
-            }else if(porcentagem >=34 && porcentagem <=66){
-                nivel = Constantes.RESULTADO_NIVEL_BO_BAIXO;
-
-            }else if(porcentagem >=67 && porcentagem<=90 ){
-                nivel = Constantes.RESULTADO_NIVEL_BO_MUITO_BAIXO;
-
-            }
-
-        return nivel;
-    }
-
-    /**
+     *
+     * Removido do projeto na versão final
      * Calcular percentual e níveis de burnmOut
+     *
      * @param classificacaoBurnOutBeans
-     */
- private void calcularPercentil(ClassificacaoBurnOutBeans classificacaoBurnOutBeans){
 
-     /**
-      * Questões de Ilusão pelo Trabalho estão invertidas, respostas muito baixas significam mais alto nível de burnout
-      *  calcular a % do ilusão do trabalho: total de perguntas 5(1, 5, 10,15 e 19)
-      */
+    private void calcularPercentil(ClassificacaoBurnOutBeans classificacaoBurnOutBeans) {
 
-     int ilusaoTotal = classificacaoBurnOutBeans.getSomatorioIlusao();
-    //20 total de pontos 100%
+        /**
+         * Questões de Ilusão pelo Trabalho estão invertidas, respostas muito baixas significam mais alto nível de burnout
+         *  calcular a % do ilusão do trabalho: total de perguntas 5(1, 5, 10,15 e 19)
+         */
 
-     int ilusaoTotalPercent = ((ilusaoTotal*20)/100);
-     classificacaoBurnOutBeans.setPercentualIlusao(ilusaoTotalPercent);
-     classificacaoBurnOutBeans.setClassifcacaoNivelIlusao(calcularNiveisEstresseIlusao(ilusaoTotalPercent));
+      //  int ilusaoTotal = classificacaoBurnOutBeans.getSomatorioIlusao();
+        //20 total de pontos 100%
 
-     /**
-      *
-      * Questões de Desgaste Psíquico são 8,12,17,18.
-      * E Questões de Indolência são 2,3,6,7,11,14 são
-      * somadas junto, faz o cálculo pela regra de três para verificar a porcentagem
-      */
+      //  int ilusaoTotalPercent = ((ilusaoTotal * 20) / 100);
+      //  classificacaoBurnOutBeans.setPercentualFinalIlusao(ilusaoTotalPercent);
+      //  classificacaoBurnOutBeans.setClassificacaoNivelIlusao(calcularNiveisEstresseIlusao(ilusaoTotalPercent));
 
-     int indolenciaDesgaste = classificacaoBurnOutBeans.getSomatorioDesgastePsiquico()+classificacaoBurnOutBeans.getSomatorioIndolencia();
-     int  indolenciaDesgastePercent = ((indolenciaDesgaste*40)/100);
-     classificacaoBurnOutBeans.setPercentuaDesgasteIndolencia(indolenciaDesgastePercent);
-     classificacaoBurnOutBeans.setClassifcacaoNivelPsiquicoIndolencia(calcularNiveisEstressePsicoIndolencia(indolenciaDesgastePercent));
+        /**
+         * DESGASTE
+         */
+      //  int desgasteTotal = classificacaoBurnOutBeans.getSomatorioDesgastePsiquico();
+      //  int desgasteTotalPercentualFinal = ((desgasteTotal * 20) /100);
+      //  classificacaoBurnOutBeans.setPercentualFinalDesgastePsiquico(desgasteTotalPercentualFinal);
 
-     /**
-      *Escala de Culpa são as questões 4,9,13,16 e 20. São calculadas separadamente.
-      * Representa o perfil crítico 1 e perfil crítico 2 de burnout.
-      * Isso significa que no total do questionário o resultado foi maior que 90%.
-      */
+        /**
+         * INDOLENCIA
+         */
+       // int indolenciaTotal = classificacaoBurnOutBeans.getSomatorioIndolencia();
+       // int indolenciaTotalPercentualFinal = ((indolenciaTotal * 20 ) /100);
+      //  classificacaoBurnOutBeans.setPercentualFinalDesgastePsiquico(indolenciaTotalPercentualFinal);
 
-     int culpaTotal = classificacaoBurnOutBeans.getSomatorioCulpa();
-     int culpaPercentual = ((culpaTotal*20)/100);
-     classificacaoBurnOutBeans.setPercentuaCulpa(culpaPercentual);
 
- }
+        /**
+         * DESGASTE+INDOLECNIA
+
+         * Questões de Desgaste Psíquico são 8,12,17,18.
+         * E Questões de Indolência são 2,3,6,7,11,14 são
+         * somadas junto, faz o cálculo pela regra de três para verificar a porcentagem
+         */
+
+       // int indolenciaDesgaste = classificacaoBurnOutBeans.getSomatorioDesgastePsiquico() + classificacaoBurnOutBeans.getSomatorioIndolencia();
+       // int indolenciaDesgastePercent = ((indolenciaDesgaste * 40) / 100);
+       // classificacaoBurnOutBeans.setPercentuaDesgasteIndolencia(indolenciaDesgastePercent);
+        //classificacaoBurnOutBeans.setClassifcacaoNivelPsiquicoIndolencia(calcularNiveisEstressePsicoIndolencia(indolenciaDesgastePercent));
+
+        /**
+         *Escala de Culpa são as questões 4,9,13,16 e 20. São calculadas separadamente.
+         * Representa o perfil crítico 1 e perfil crítico 2 de burnout.
+         * Isso significa que no total do questionário o resultado foi maior que 90%.
+         */
+
+       // int culpaTotal = classificacaoBurnOutBeans.getSomatorioCulpa();
+       // int culpaPercentual = ((culpaTotal * 20) / 100);
+        //classificacaoBurnOutBeans.setPercentualFinalCulpa(culpaPercentual);
+
+    //}
+
 
 
 }
