@@ -600,12 +600,27 @@ public class ClassificacaoSonoPittsburgh {
         if (somatorio >= 0 && somatorio <= 4) {
             getClassificacaoSonoPittsburghBeans().setResultado_total_PSQI_componentes(Constantes.RESULTADO_COMPONENTE_soma_7_0_4);
             getClassificacaoSonoPittsburghBeans().setEscore_total_PSQI_componentes(somatorio);
+            getClassificacaoSonoPittsburghBeans().setClassificacao_resultado_texto_motivacional(
+                    "Parabéns! Sua indicação de qualidade de sono está excelente. Sono revigorante faz o cérebro trabalhar melhor no dia seguinte. "
+            );
         } else if (somatorio >= 5 && somatorio <= 10) {
             getClassificacaoSonoPittsburghBeans().setResultado_total_PSQI_componentes(Constantes.RESULTADO_COMPONENTE_soma_7_5_10);
             getClassificacaoSonoPittsburghBeans().setEscore_total_PSQI_componentes(somatorio);
+            getClassificacaoSonoPittsburghBeans().setClassificacao_resultado_texto_motivacional(
+                    "A qualidade do seu sono está ruim. Alguns elementos como horário de dormir podem estar prejudicando sua saúde sonial."
+            );
         } else if (somatorio > 10) {
             getClassificacaoSonoPittsburghBeans().setResultado_total_PSQI_componentes(Constantes.RESULTADO_COMPONENTE_soma_7_maior_10);
             getClassificacaoSonoPittsburghBeans().setEscore_total_PSQI_componentes(somatorio);
+            getClassificacaoSonoPittsburghBeans().setClassificacao_resultado_texto_motivacional(
+                    "Atenção!! Você está com distúrbio do sono. Sua saúde pode estar em risco e suas noites mal dormidas podem estar prejudicando sua vida diurna. "
+            );
+        }else{
+            getClassificacaoSonoPittsburghBeans().setResultado_total_PSQI_componentes(Constantes.DEFAULT);
+            getClassificacaoSonoPittsburghBeans().setEscore_total_PSQI_componentes(0);
+            getClassificacaoSonoPittsburghBeans().setClassificacao_resultado_texto_motivacional(
+                    "Não aferido! "
+            );
         }
     }
 
@@ -617,4 +632,6 @@ public class ClassificacaoSonoPittsburgh {
     public void setClassificacaoSonoPittsburghBeans(ClassificacaoSonoPittsburghBeans classificacaoSonoPittsburghBeans) {
         this.classificacaoSonoPittsburghBeans = classificacaoSonoPittsburghBeans;
     }
+
+
 }

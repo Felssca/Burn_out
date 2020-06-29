@@ -51,22 +51,22 @@
         <activity
             android:name=".activity.TelaCadastroInicialActivity"
             android:windowSoftInputMode = "adjustPan"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="fullSensor"></activity>
         <activity
             android:name=".activity.TelaMontarDadosCompletosActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".activity.TelaCadastroInicialRespostaActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".activity.BackupSQLActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".activity.PermissoesActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".activity.ListarProfissionaisEntrevistadosActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="fullSensor"></activity>
     </application>
 
 </manifest>

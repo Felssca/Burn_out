@@ -29,7 +29,7 @@ public class ClassificacaoBurnOutCalculos {
      *### ILUSAO DO TRABALHO ###
      */
     /**
-     * calcula a media do trabaho
+     * calcula a media do trabaho # remover solução
      *
      * @param mediaTrabalho
      * @return
@@ -58,7 +58,7 @@ public class ClassificacaoBurnOutCalculos {
         } else if (mediaTrabalho >= 17 && mediaTrabalho <= 20) {
             resultado = Constantes.RESULTADO_MUITO_BAIXO;
         } else {
-            resultado = Constantes.RESULTADO_MUITO_BAIXO;
+            resultado = Constantes.DEFAULT;
         }
 
         return resultado;
@@ -86,6 +86,27 @@ public class ClassificacaoBurnOutCalculos {
             resultado = 0;
         }
 
+
+        return resultado;
+
+    }
+
+    /**
+     *  MEDIR O NIVEL PELA MEDIA
+     * @param percentagem
+     * @return
+     */
+    protected String calculoIlusaoTrabalho(int percentagem){
+            String resultado;
+        if (percentagem <= 10) {
+            resultado = Constantes.RESULTADO_NIVEL_BO_BAIXO;
+        } else if (percentagem > 10 && percentagem <= 30) {
+            resultado = Constantes.RESULTADO_NIVEL_BO_MEDIO;
+        } else if (percentagem == 30) {
+            resultado = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
+        } else {
+            resultado = Constantes.DEFAULT;
+        }
 
         return resultado;
 
@@ -143,6 +164,9 @@ public class ClassificacaoBurnOutCalculos {
             resultado = Constantes.RESULTADO_NIVEL_BO_MEDIO;
         } else if (mediaDesgastePsiquico >= 12 && mediaDesgastePsiquico <= 16) {
             resultado = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
+        }else{
+            resultado = Constantes.DEFAULT;
+
         }
 
 
@@ -163,6 +187,8 @@ public class ClassificacaoBurnOutCalculos {
             percentualTotal = 20;
         } else if (totalResposta >= 12 && totalResposta <= 16) {
             percentualTotal = 30;
+        }else{
+            percentualTotal = 0;
         }
 
         return percentualTotal;
@@ -194,6 +220,9 @@ public class ClassificacaoBurnOutCalculos {
             resultado = Constantes.RESULTADO_NIVEL_BO_MEDIO;
         } else if (mediaIndolencia >= 17 && mediaIndolencia <= 24) {
             resultado = Constantes.RESULTADO_NIVEL_BO_ELEVADO;
+        }else{
+
+            resultado = Constantes.DEFAULT;
         }
 
         return resultado;
@@ -214,6 +243,8 @@ public class ClassificacaoBurnOutCalculos {
             percentualTotal = 20;
         } else if (totalRespostaIndolencia >= 17 && totalRespostaIndolencia <= 24) {
             percentualTotal = 30;
+        }else{
+            percentualTotal = 0;
         }
 
         return percentualTotal;
@@ -362,6 +393,33 @@ public class ClassificacaoBurnOutCalculos {
         return nivel;
 
     }
+
+    protected String textMotivacional(int porcentagem){
+        String retorno;
+        if (porcentagem <= 10) {
+            retorno = "Parabéns! Seus hábitos saudáveis estão contribuindo para afastar qualquer propensão ao BrunOut – continue assim.";
+
+        } else if (porcentagem >= 11 && porcentagem <= 33) {
+            retorno = "Parabéns! Seus hábitos saudáveis estão contribuindo para afastar qualquer propensão ao BrunOut – continue assim.";
+
+        } else if (porcentagem >= 34 && porcentagem <= 66) {
+            retorno = "Ok, Seus níveis indicaram que você pode estar próximo de atingir um estresse muito forte e entrar em BurnOut," +
+                    "reveja com calma os pontos que podem estar conduzindo para esse quadro e tente mudar seus hábitos. ";
+
+        } else if (porcentagem >= 67 && porcentagem <= 90) {
+            retorno = "Atenção! Seus níveis indicam que você pode entrar em BurnOut a qualquer momento. " +
+                    "Procure um médico especializado para auxilia-lo; Sua saúde está em Risco!";
+
+        } else {
+            retorno = Constantes.DEFAULT;
+
+        }
+
+
+
+        return retorno;
+    }
+
 
 
 }

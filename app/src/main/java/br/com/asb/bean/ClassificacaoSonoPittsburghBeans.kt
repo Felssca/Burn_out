@@ -64,6 +64,7 @@ class ClassificacaoSonoPittsburghBeans {
     //qual varia de 0 a 21.
     var escore_total_PSQI_componentes: Int = 0;
     var resultado_total_PSQI_componentes: String = "";
+    var classificacao_resultado_texto_motivacional:String="";
 
 
 

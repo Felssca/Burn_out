@@ -1,5 +1,9 @@
 package br.com.asb.negocio;
 
+import android.support.annotation.NonNull;
+
+import org.jetbrains.annotations.Contract;
+
 import br.com.asb.bean.AnamineseProfissionalBean;
 import br.com.asb.bean.ClassificacaoAtividadeFisicaBeans;
 
@@ -26,7 +30,6 @@ public class ClassificacaoAtividadeFisica {
     }
 
     public ClassificacaoAtividadeFisica() {
-
 
 
     }
@@ -57,7 +60,7 @@ public class ClassificacaoAtividadeFisica {
         classificacaoAtividadeFisicaBeans = new ClassificacaoAtividadeFisicaBeans();
 
 
-         int numResultado = 0;
+        int numResultado = 0;
 
         if (anamineseProfissionalBean.getPraticaAtividadeFisica() == true) {
 
@@ -66,12 +69,12 @@ public class ClassificacaoAtividadeFisica {
 
                     numResultado = RISCO;
 
-                break;
+                    break;
                 case (2):
 
                     numResultado = RISCO;
 
-                break;
+                    break;
 
                 case (3):
 
@@ -87,13 +90,13 @@ public class ClassificacaoAtividadeFisica {
 
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }else{
+                    } else {
 
                         numResultado = NAO_INFORMADO;
                     }
 
 
-                 break;
+                    break;
 
 
                 case (4):
@@ -108,12 +111,12 @@ public class ClassificacaoAtividadeFisica {
                     } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }else{
+                    } else {
 
                         numResultado = NAO_INFORMADO;
                     }
 
-                break;
+                    break;
 
                 case (5):
 
@@ -128,11 +131,11 @@ public class ClassificacaoAtividadeFisica {
                     } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }else{
+                    } else {
                         numResultado = NAO_INFORMADO;
 
                     }
-                break;
+                    break;
 
 
                 case (6):
@@ -148,12 +151,12 @@ public class ClassificacaoAtividadeFisica {
                     } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }else{
+                    } else {
                         numResultado = NAO_INFORMADO;
 
                     }
 
-                break;
+                    break;
                 case (7):
 
                     if (anamineseProfissionalBean.getIntensidadeLeve()) {
@@ -167,16 +170,15 @@ public class ClassificacaoAtividadeFisica {
                     } else if (anamineseProfissionalBean.getIntensidadeAlta()) {
                         int tempo = alterarDuracao(anamineseProfissionalBean.getDuracaoAtividade());
                         numResultado = resultadoAtividadeDuracao(tempo, isHoras(tempo), ALTA);
-                    }else{
+                    } else {
 
                         numResultado = NAO_INFORMADO;
                     }
 
-                break;
+                    break;
 
                 default:
                     numResultado = NAO_INFORMADO;
-
 
 
             }
@@ -188,6 +190,8 @@ public class ClassificacaoAtividadeFisica {
         }
         classificacaoAtividadeFisicaBeans.setNumResultado(numResultado);
         classificacaoAtividadeFisicaBeans.setTextResultado(textResultado(numResultado));
+        classificacaoAtividadeFisicaBeans.setClassificacao_resultado_texto_motivacional(resultadoClassifcacaoTextoMotivacional(numResultado));
+
 
     }
 
@@ -224,7 +228,7 @@ public class ClassificacaoAtividadeFisica {
                     }
 
                 }
-            break;
+                break;
             case (MEDIA):
 
                 if (isHoras(tempo) == true) {
@@ -245,7 +249,7 @@ public class ClassificacaoAtividadeFisica {
                     }
 
                 }
-            break;
+                break;
             case (MEDIA3X):
 
                 if (isHoras(tempo) == true) {
@@ -266,7 +270,7 @@ public class ClassificacaoAtividadeFisica {
                     }
 
                 }
-            break;
+                break;
             case (ALTA):
                 if (isHoras(tempo) == true) {
                     if (tempo > 1) {
@@ -287,7 +291,7 @@ public class ClassificacaoAtividadeFisica {
 
                 }
 
-            break;
+                break;
 
             default:
                 resultDuracao = NAO_INFORMADO;
@@ -354,7 +358,7 @@ public class ClassificacaoAtividadeFisica {
      * @param duracao
      * @return
      */
-    private int alterarDuracao(String duracao) {
+    private int alterarDuracao( String duracao) {
 
         int numDuracao = 0;
 
@@ -380,29 +384,48 @@ public class ClassificacaoAtividadeFisica {
             char[] duracaoChar = duracao.toCharArray();
 
 
-            for(int i=0; i <duracaoChar.length; i++){
+            for (int i = 0; i < duracaoChar.length; i++) {
 
-                if(Character.isDigit(duracaoChar[i])){
-                    parcial+=duracaoChar[i];
-                }else{
+                if (Character.isDigit(duracaoChar[i])) {
+                    parcial += duracaoChar[i];
+                } else {
                     possuiLetra = true;
                 }
 
             }
 
-            if(possuiLetra == true){
+            if (possuiLetra == true) {
                 numDuracao = Integer.parseInt(parcial);
-            }else{
+            } else {
                 parcial = duracao;
                 numDuracao = Integer.parseInt(parcial);
 
             }
 
 
-
-
         }
         return numDuracao;
+
+    }
+
+    @NonNull
+    @Contract(pure = true)
+    private String resultadoClassifcacaoTextoMotivacional(int resultado) {
+        String textoMotivacional;
+
+        if (resultado == ADEQUADO) {
+            textoMotivacional = "Parabéns ! A atividade física está adequada. Ajuda a manter a saúde mental e a boa forma.";
+        } else if (resultado == INADEQUADO) {
+            textoMotivacional = "A atividade física está insatisfatória. Tente melhorar alguns aspectos como o tempo de atividade, intensidade e sua constância.";
+
+        } else if (resultado == RISCO) {
+            textoMotivacional = "Cuidado! Risco! Você está praticando atividade física de forma indevida. Pode levar à danos graves a saúde.";
+
+        } else {
+            textoMotivacional = "Não foi possível aferir o resultado";
+
+        }
+        return textoMotivacional;
 
     }
 }

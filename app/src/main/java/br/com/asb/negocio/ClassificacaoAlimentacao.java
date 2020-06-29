@@ -46,17 +46,13 @@ public class ClassificacaoAlimentacao {
         //altura = Integer.parseInt(anamineseProfissionalBean.getAltura());
         peso = Double.parseDouble(anamineseProfissionalBean.getPeso());
         //peso = Integer.parseInt(anamineseProfissionalBean.getPeso());
-        alturaMedia = altura /100 ;
+        alturaMedia = altura / 100;
         IMC = peso / (alturaMedia * alturaMedia);
         bigDecimal = new BigDecimal(IMC).setScale(2, RoundingMode.HALF_UP);
         IMCnovo = bigDecimal.doubleValue();
 
         classificacaoAlimentacaoBeans.setIMC(IMCnovo);
         classificacaoAlimentacaoBeans.setResultado_IMC(classificacaoIMC(IMCnovo));
-
-
-
-
     }
 
     private String classificacaoIMC(Double resultado) {
@@ -129,11 +125,11 @@ public class ClassificacaoAlimentacao {
 
         }
 
-        total = totalQ05+totalQ10;
+        total = totalQ05 + totalQ10;
 
         classificacaoAlimentacaoBeans.setRespostas_resultados_corretas(total);
         classificacaoAlimentacaoBeans.setClassificacao_resultado_respostas(resultadoAvaliacaoFrequenciaAlimento(total));
-
+        classificacaoAlimentacaoBeans.setClassificacao_resultado_texto_motivacional(resultadoClassifcacaoTextoMotivacional(total));
     }
 
     private String resultadoAvaliacaoFrequenciaAlimento(int total) {
@@ -142,18 +138,37 @@ public class ClassificacaoAlimentacao {
             resultado = "Muito ruim";
         } else if (total == 3 || total == 4) {
             resultado = "Ruim";
-        } else if (total == 5 || total == 6){
+        } else if (total == 5 || total == 6) {
             resultado = "Bom";
-        } else if(total == 7 || total == 8){
+        } else if (total == 7 || total == 8) {
             resultado = "Muito Bom";
-        }else if(total == 9 || total == 10){
+        } else if (total == 9 || total == 10) {
             resultado = "Excelente";
-        }else{
+        } else {
             resultado = "Não foi possível aferir";
         }
 
 
-            return resultado;
+        return resultado;
+
+    }
+
+    private String resultadoClassifcacaoTextoMotivacional(int total) {
+        String texto;
+
+        if (total <= 4) {
+            texto = "Sua alimentação desbalanceada está contribuindo para o resultado negativo de BurnOut.";
+
+        } else if (total > 4 && total <= 8) {
+            texto = "Sua alimentação está balanceada!";
+
+        } else if (total >= 9) {
+            texto = "Parabéns!! Sua alimentação está impecável.";
+        } else {
+            texto = "Não foi possível aferir o resultado";
+        }
+
+        return texto;
 
     }
 

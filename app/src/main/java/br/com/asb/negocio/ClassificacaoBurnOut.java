@@ -40,7 +40,9 @@ public class ClassificacaoBurnOut {
         classificacaoBurnOutBeans.setClassificacaoIlusaoTrabalho(ClassificacaoBurnOutCalculos.getInstance().calculoClassificacaoIlusaoTrabalho(classificacaoIlusaoTrabalho));
         classificacaoBurnOutBeans.setPercentualParcialIlusao(ClassificacaoBurnOutCalculos.getInstance().calculoPercParcialIlusaoTrabalho(somatorioIlusaoTrabalho));
         classificacaoBurnOutBeans.setSomatorioIlusao(somatorioIlusaoTrabalho);
-        classificacaoBurnOutBeans.setClassificacaoNivelIlusao(ClassificacaoBurnOutCalculos.getInstance().calcularNiveisEstresseIlusao(somatorioIlusaoTrabalho));
+        classificacaoBurnOutBeans.setClassificacaoNivelIlusao(ClassificacaoBurnOutCalculos.getInstance().calculoIlusaoTrabalho(
+                classificacaoBurnOutBeans.getPercentualParcialIlusao()
+        ));
 
         /* DESGASTE PSIQUICO*/
 
@@ -75,13 +77,16 @@ public class ClassificacaoBurnOut {
         int somatorioIndolencia;
         int classificacaoIndolencia;
 
-        somatorioIndolencia = burnOutBean.getPergunta_03() + burnOutBean.getPergunta_02() + burnOutBean.getPergunta_06() + burnOutBean.getPergunta_07() +
+        somatorioIndolencia = burnOutBean.getPergunta_03() + burnOutBean.getPergunta_02() +
+                burnOutBean.getPergunta_06() + burnOutBean.getPergunta_07() +
                 burnOutBean.getPergunta_11() + burnOutBean.getPergunta_14();
         classificacaoIndolencia = somatorioIndolencia;
 
         classificacaoBurnOutBeans.setSomatorioIndolencia(somatorioIndolencia);
-        classificacaoBurnOutBeans.setClassificacaoIndolencia(ClassificacaoBurnOutCalculos.getInstance().calculoClassificacaoIndolencia(somatorioIndolencia));
-        classificacaoBurnOutBeans.setPercentualParcialIndolencia(ClassificacaoBurnOutCalculos.getInstance().claculoPercIndolencia(somatorioIndolencia));
+        classificacaoBurnOutBeans.setClassificacaoIndolencia(ClassificacaoBurnOutCalculos.getInstance()
+                .calculoClassificacaoIndolencia(somatorioIndolencia));
+        classificacaoBurnOutBeans.setPercentualParcialIndolencia(ClassificacaoBurnOutCalculos.getInstance()
+                .claculoPercIndolencia(somatorioIndolencia));
 
         /* INDOLENCIA + DESGASTE PSIQUICO */
         int classificacaoDesgastePsiquicoIndolencia;
@@ -89,7 +94,8 @@ public class ClassificacaoBurnOut {
         classificacaoDesgastePsiquicoIndolencia = classificacaoIndolencia + classificacaoDesgastePsiquico;
         classificacaoBurnOutBeans.setDesgastePsiquicoIndolenciaTotal(classificacaoDesgastePsiquicoIndolencia);
         classificacaoBurnOutBeans.setClassificacaoDesgastePsiquicoIndolencia(
-                ClassificacaoBurnOutCalculos.getInstance().calculoClassificacaoIndolenciaDesgastePsiquico(classificacaoDesgastePsiquicoIndolencia));
+                ClassificacaoBurnOutCalculos.getInstance().
+                        calculoClassificacaoIndolenciaDesgastePsiquico(classificacaoDesgastePsiquicoIndolencia));
 
 
         /* CULPA */
@@ -101,7 +107,8 @@ public class ClassificacaoBurnOut {
         int somatorioCulpa;
         int totalCulp;
 
-        somatorioCulpa = burnOutBean.getPergunta_04() + burnOutBean.getPergunta_09() + burnOutBean.getPergunta_13() + burnOutBean.getPergunta_16() +
+        somatorioCulpa = burnOutBean.getPergunta_04() + burnOutBean.getPergunta_09() +
+                burnOutBean.getPergunta_13() + burnOutBean.getPergunta_16() +
                 burnOutBean.getPergunta_20();
 
         totalCulp = somatorioCulpa;
@@ -126,12 +133,9 @@ public class ClassificacaoBurnOut {
                 +classificacaoBurnOutBeans.getSomatorioDesgastePsiquico();
         classificacaoBurnOutBeans.setSomatoriaPercentualTotalBurnOUT(somatorioFinalBurnOut);
 
-        classificacaoBurnOutBeans.setClassificacaoSomatorioTotalBurnOUT(ClassificacaoBurnOutCalculos.getInstance().calcularResultadoSomatoriaBurnOutPercentual(somatorioFinalBurnOut));
-
-
-
-
-
+        classificacaoBurnOutBeans.setClassificacaoSomatorioTotalBurnOUT(ClassificacaoBurnOutCalculos.getInstance().
+                calcularResultadoSomatoriaBurnOutPercentual(somatorioFinalBurnOut));
+        classificacaoBurnOutBeans.setClassificacao_resultado_texto_motivacional(ClassificacaoBurnOutCalculos.getInstance().textMotivacional(somatorioFinalBurnOut));
 
 
     }

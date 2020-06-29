@@ -10,4 +10,6 @@ class ClassificacaoAlimentacaoBeans {
     var respostas_resultados_corretas:Int=0
     var classificacao_resultado_respostas:String=""
 
+    var classificacao_resultado_texto_motivacional:String="";
+
 }

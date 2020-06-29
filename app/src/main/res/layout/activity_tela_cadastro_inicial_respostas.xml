@@ -3336,12 +3336,327 @@
                     android:orientation="horizontal"
                     android:textColor="@color/pink_3"
                     android:textSize="20sp">
+                </TextView>
 
+                <!--RESULTADO FINAL TELA-->
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/pink_3"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo">
+                </TextView>
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp" />
+
+                <!--ALIMENTACAO-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/pink_3"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_alimentacao">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_valor_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_alimentacao_valor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_alimentacao">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_resultado_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_alimentacao_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_alimentacao">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_alimentacao_motivacional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_alimentacao">
                 </TextView>
 
 
+                <!--Atividade física-->
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp" />
 
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/pink_3"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_fisica">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_valor_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_atividadeFisica_valor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_alimentacao">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_resultado_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_atividadeFisica_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_alimentacao">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_atividadeFisica_motivacional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_alimentacao">
+                </TextView>
+
+                <!--Sono Pittsburg-->
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/pink_3"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_sono">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_valor_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_sonoPittsburg_valor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_resultado_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_sonoPittsburg_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_sonoPittsburg_motivacional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp">
+                </TextView>
+
+                <!--BurnPOut-->
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/pink_3"
+                    android:textSize="30sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_burnOut">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_valor_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_burnOut_valor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/carbon"
+                    android:textSize="20sp"
+                    android:text="@string/lbl_txt_classificacao_resumo_resultado_final">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_burnOut_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/resultado_classificacao_final_burnOut_motivacional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp">
+                </TextView>
 
 
             </LinearLayout>

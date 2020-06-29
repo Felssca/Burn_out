@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -20,6 +21,8 @@ import br.com.asb.bean.AnamineseProfissionalBean;
 import br.com.asb.bean.BurnOutBean;
 import br.com.asb.bean.ListaTotalDadosPesquisa;
 import br.com.asb.bean.SonoPittsburghBeans;
+import br.com.asb.negocio.ClassificacaoAlimentacao;
+import br.com.asb.negocio.ClassificacaoAtividadeFisica;
 import br.com.asb.negocio.ClassificacaoBurnOut;
 import br.com.asb.negocio.ClassificacaoSonoPittsburgh;
 import br.com.asb.persistencia.dao.DAOCadastro;
@@ -246,7 +249,24 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
     private TextView textViewResposta_classificacao_sono_PSQI_qualidade;
     private TextView textViewResposta_classificacao_sono_PSQI_pontuacao;
 
+    /**
+     * RESUMO DE TODOS OS RESULTADOS
+     */
+    private TextView textViewResumo_classificacao_alimentacao_valor;
+    private TextView textViewResumo_classificacao_alimentacao_texto;
+    private TextView textViewResumo_classificacao_alimentacao_texto_motivacional;
 
+    private TextView textViewResumo_classificacao_atividadeFisica_valor;
+    private TextView textViewResumo_classificacao_atividadeFisica_texto;
+    private TextView textViewResumo_classificacao_atividadeFisica_motivacional;
+
+    private TextView textViewResumo_classificacao_sonoPittsburg_valor;
+    private TextView textViewResumo_classificacao_sonoPittsburg_texto;
+    private TextView textViewResumo_classificacao_sonoPittsburg_motivacional;
+
+    private TextView textViewResumo_classificacao_burnOut_valor;
+    private TextView textViewResumo_classificacao_burnOut_texto;
+    private TextView textViewResumo_classificacao_burnOut_motivacional;
 
 
     private int cont = 0;
@@ -504,6 +524,26 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
         textViewResposta_alimentacao_8 = (TextView) findViewById(R.id.resposta_alimento_8);
         textViewResposta_alimentacao_9 = (TextView) findViewById(R.id.resposta_alimento_9);
         textViewResposta_alimentacao_10 = (TextView) findViewById(R.id.resposta_alimento_10);
+
+        //================================>RESUMO DO APLICATIVO<=============================================
+
+        //Alimentacao
+        textViewResumo_classificacao_alimentacao_valor = (TextView)findViewById(R.id.resultado_classificacao_final_alimentacao_valor);
+        textViewResumo_classificacao_alimentacao_texto = (TextView)findViewById(R.id.resultado_classificacao_final_alimentacao_texto);
+        textViewResumo_classificacao_alimentacao_texto_motivacional = (TextView)findViewById(R.id.resultado_classificacao_final_alimentacao_motivacional);
+        //Atividade física
+        textViewResumo_classificacao_atividadeFisica_valor = (TextView)findViewById(R.id.resultado_classificacao_final_atividadeFisica_valor);
+        textViewResumo_classificacao_atividadeFisica_texto = (TextView)findViewById(R.id.resultado_classificacao_final_atividadeFisica_texto);
+        textViewResumo_classificacao_atividadeFisica_motivacional = (TextView)findViewById(R.id.resultado_classificacao_final_atividadeFisica_motivacional);
+        //Sono Pittsburg
+        textViewResumo_classificacao_sonoPittsburg_valor = (TextView)findViewById(R.id.resultado_classificacao_final_sonoPittsburg_valor);
+        textViewResumo_classificacao_sonoPittsburg_texto = (TextView)findViewById(R.id.resultado_classificacao_final_sonoPittsburg_texto);
+        textViewResumo_classificacao_sonoPittsburg_motivacional = (TextView)findViewById(R.id.resultado_classificacao_final_sonoPittsburg_motivacional);
+        //BurnOut
+        textViewResumo_classificacao_burnOut_valor = (TextView)findViewById(R.id.resultado_classificacao_final_burnOut_valor);
+        textViewResumo_classificacao_burnOut_texto = (TextView)findViewById(R.id.resultado_classificacao_final_burnOut_texto);
+        textViewResumo_classificacao_burnOut_motivacional = (TextView)findViewById(R.id.resultado_classificacao_final_burnOut_motivacional);
+
 
         id = (Integer) getIntent().getSerializableExtra("ID");
         popularLista();
@@ -927,12 +967,92 @@ public class TelaCadastroInicialRespostaActivity extends Activity {
         );
 
 
+        /**
+         * RESUMO DA TELA RESULTADO FINAL CATEGORIAS
+         */
+
+
+        ClassificacaoAlimentacao classificacaoAlimentacao = new ClassificacaoAlimentacao();
+        classificacaoAlimentacao.classificarFrequenciaAlimentar(alimentacaoBeans);
+
+        //Alimentacao
+        textViewResumo_classificacao_alimentacao_valor.setText(Integer.toString(classificacaoAlimentacao.getClassificacaoAlimentacaoBeans()
+                .getRespostas_resultados_corretas()));
+        textViewResumo_classificacao_alimentacao_texto.setText(classificacaoAlimentacao.getClassificacaoAlimentacaoBeans()
+        .getClassificacao_resultado_respostas());
+        textViewResumo_classificacao_alimentacao_texto_motivacional.setText(classificacaoAlimentacao.getClassificacaoAlimentacaoBeans()
+        .getClassificacao_resultado_texto_motivacional());
+
+        //AtividadeFisica
+
+        ClassificacaoAtividadeFisica classificacaoAtividadeFisica = new ClassificacaoAtividadeFisica();
+        classificacaoAtividadeFisica.classificarAtividadeFisica(anamineseProfissionalBean);
+
+        textViewResumo_classificacao_atividadeFisica_valor.setText(Integer.toString(classificacaoAtividadeFisica.getClassificacaoAtividadeFisicaBeans()
+        .getNumResultado()));
+        textViewResumo_classificacao_atividadeFisica_texto.setText(classificacaoAtividadeFisica.getClassificacaoAtividadeFisicaBeans()
+        .getTextResultado());
+        textViewResumo_classificacao_atividadeFisica_motivacional.setText(classificacaoAtividadeFisica.getClassificacaoAtividadeFisicaBeans()
+        .getClassificacao_resultado_texto_motivacional());
+
+        //Sono de pittsburg
+
+        textViewResumo_classificacao_sonoPittsburg_valor.setText(
+                Integer.toString(classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getEscore_total_PSQI_componentes()));
+        textViewResumo_classificacao_sonoPittsburg_texto.setText(
+                classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getResultado_total_PSQI_componentes()
+        );
+        textViewResumo_classificacao_sonoPittsburg_motivacional.setText(
+                classificacaoSonoPittsburgh.getClassificacaoSonoPittsburghBeans().getClassificacao_resultado_texto_motivacional()
+        );
+
+
+        //Resultado BurnoUT
+
+        textViewResumo_classificacao_burnOut_valor.setText(
+                Integer.toString(classificacaoBurnOut.getClassificacaoBurnOutBeans().getSomatoriaPercentualTotalBurnOUT()));
+        textViewResumo_classificacao_burnOut_texto.setText(
+                classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacaoSomatorioTotalBurnOUT()
+        );
+        textViewResumo_classificacao_burnOut_motivacional.setText(
+                classificacaoBurnOut.getClassificacaoBurnOutBeans().getClassificacao_resultado_texto_motivacional()
+        );
+
+
+
+
+
+    }
+
+    private void alterarCorTextResultado(int resultado, int tipoClassificacao) {
+        /**
+         *Alimentacao = 1;
+         *
+         */
+
+        switch (resultado) {
+            case 1:
+                coresResultadoAlimentacao(resultado);
+                return;
+        }
+    }
+
+    private void coresResultadoAlimentacao(int resultadoFinal){
+
+
+        }
+
+
 
     }
 
 
 
-}
+
+
+
+
+
 
 
 

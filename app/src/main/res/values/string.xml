@@ -300,6 +300,19 @@
     <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_7">Componente 7 Disfunção durante o dia</string>
     <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_PSQI"> Pontuação Global do PSQI</string>
 
+    <!--RESUMO DA CLASSIFCAÇÃO PARA O USUARIO-->
+    <string name="lbl_txt_classificacao_resumo"> Resumo da classificação</string>
+
+    <string name="lbl_txt_classificacao_resumo_valor_final"> Valor Final:</string>
+    <string name="lbl_txt_classificacao_resumo_resultado_final"> Resultado Final:</string>
+
+    <string name="lbl_txt_classificacao_resumo_alimentacao"> Alimentação</string>
+    <string name="lbl_txt_classificacao_resumo_fisica"> Atividade Física</string>
+    <string name="lbl_txt_classificacao_resumo_sono"> Sono de Pittsburg</string>
+    <string name="lbl_txt_classificacao_resumo_burnOut"> BurnOut</string>
+
+
+
     <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_escore">Escore </string>
     <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_soma">Soma </string>
     <string name="lbl_txt_classificacao_indice_sono_pittsburg_componente_resposta">Resposta </string>

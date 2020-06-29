@@ -37,6 +37,7 @@ class ClassificacaoBurnOutBeans {
     var classifcacaoNivelPsiquicoIndolencia: String = ""
     var somatoriaPercentualTotalBurnOUT: Int =0;
     var classificacaoSomatorioTotalBurnOUT: String=""
+    var classificacao_resultado_texto_motivacional:String="";
 
 
 
